@@ -1,3 +1,35 @@
+/* basic styles */
+.center{
+    text-align:center;
+}
+
+.sub-text{
+    color:gray;
+    font-weight:bold;
+    font-size:11px;
+}
+
+.padding-top{
+    padding-bottom:10rem;
+}
+
+.padding-bottom{
+    padding-bottom:3rem;
+}
+
+.padding-left{
+    padding-left:3rem;
+}
+
+.padding-right{
+    padding-right:3rem;
+}
+
+.margin-none{
+    margin:0;
+}
+
+/* account designs */
 .account-background {
     background: linear-gradient(#0ECB81, white);
     display: flex;
@@ -17,4 +49,130 @@
     width: 50vw;
     background-color:white;
     box-shadow:-3px -3px 10px 0.1px rgb(181, 181, 181);
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+/* thumbsup */
+.left-box{
+    display:flex;
+    flex-direction:column;
+}
+
+.img-container{
+    display:flex;
+    flex-direction:row;
+}
+
+.logo-img{
+    padding: 2rem 0 0 3rem;
+    width:1.7rem;
+}
+
+.thumbs-img{
+    width: 31.5vw;
+}
+
+/* social login */
+.social-login-box{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items:center;
+    height:3rem;
+}
+
+.social-login{
+    margin:1rem;
+    border: 1px solid lightgray;
+    border-radius:5px;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items:center;
+    padding:0 1rem;
+    width: 9vw;
+    color:gray;
+    font-weight:bold;
+    font-size:11px;
+}
+
+.social-login:hover{
+    background-color:#00A869;
+    color:white;
+}
+
+.social-login-img{
+    width:1rem;
+    padding-right:0.3rem;
+}
+
+/* hr */
+.hr-box{
+    display:flex;
+    flex-direction:row;
+    height:5rem;
+    padding-top:5rem;
+}
+
+.hr-style{
+    width:15vw;
+    border-top:1px solid lightgray;
+    height:0.1px;
+}
+
+/* input box */
+.input-box{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    width:35vw;
+}
+
+.input-text{
+    font-size: 13px;
+    padding-bottom: 1rem;
+}
+
+.input{
+    background-color:#F8F8F8;
+    border:none;
+    border-radius:7px;
+    height:3rem;
+    margin-bottom:1rem;
+    padding-left:1.5rem;
+}
+
+.submit-button{
+    background-color:#00A869;
+    border:none;
+    border-radius:7px;
+    height:3rem;
+    margin-bottom:1rem;
+    color:white;
+    font-weight:bold;
+    margin-top:1rem;
+}
+
+.submit-button:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+/* signup link */
+.bottom-box{
+    display:flex;
+    flex-direction:row;
+}
+
+.link-text{
+    padding-left:0.3rem;
+    font-size:11px;
+    text-decoration:none;
+    color:#00A969;
+}
+
+.link-text:hover{
+    color:rgb(50, 50, 50);
 }
