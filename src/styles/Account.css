@@ -29,13 +29,29 @@
     margin:0;
 }
 
-/* account designs */
-.account-background {
-    background: linear-gradient(#0ECB81, white);
-    display: flex;
+.stocodi-color{
+    color:#00A968;
+}
+
+.flex-row{
+    display:flex;
     flex-direction:row;
     justify-content: center;
     align-items:center;
+}
+
+.flex-col{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+}
+
+/* == LOGIN == */
+
+/* account designs */
+.account-background {
+    background: linear-gradient(#0ECB81, white);
     height:100vh;
 }
 
@@ -49,10 +65,6 @@
     width: 50vw;
     background-color:white;
     box-shadow:-3px -3px 10px 0.1px rgb(181, 181, 181);
-    display: flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
 }
 
 /* thumbsup */
@@ -77,26 +89,22 @@
 
 /* social login */
 .social-login-box{
-    display:flex;
-    flex-direction:row;
-    justify-content: center;
-    align-items:center;
-    height:3rem;
+    height:1rem;
 }
 
 .social-login{
     margin:1rem;
     border: 1px solid lightgray;
     border-radius:5px;
-    display:flex;
-    flex-direction:row;
-    justify-content: center;
-    align-items:center;
     padding:0 1rem;
     width: 9vw;
+    /* width: 7rem; */
+}
+
+.social-text{
     color:gray;
     font-weight:bold;
-    font-size:11px;
+    font-size:10px;
 }
 
 .social-login:hover{
@@ -113,7 +121,7 @@
 .hr-box{
     display:flex;
     flex-direction:row;
-    height:5rem;
+    height:3rem;
     padding-top:5rem;
 }
 
@@ -168,6 +176,7 @@
 
 .link-text{
     padding-left:0.3rem;
+    font-weight:bold;
     font-size:11px;
     text-decoration:none;
     color:#00A969;
@@ -175,4 +184,10 @@
 
 .link-text:hover{
     color:rgb(50, 50, 50);
+}
+
+/* == SIGNUP == */
+
+.arrow-img{
+    width:1.5rem;
 }

@@ -5,27 +5,9 @@ import naver from '../img/naver.png'
 import kakao from '../img/kakao.png'
 import logo from '../img/logo-white.png'
 import thumbs from '../img/thumbs.png'
+import rightArrow from '../img/right-arrow.png'
 
-function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    async function login() {
-        console.log(email, password)
-        // api 통신
-        // let item = {email, password};
-        // let result = await fetch("http://13.125.105.227:8080/member/login", {
-        //     method: 'POST',
-        //     body:JSON.stringify(item),
-        //     headers:{
-        //         "Content-Type":"application/json",
-        //         "Accept":"application/json"
-        //     },
-        // }).then(res=>{
-        //     console.log(res);
-        // })
-        // result = await result.json();
-        // localStorage.setItem("user-info", JSON.stringify(result))
-    }
+function Signup() {
     return (
         <div class="account-background flex-row">
             {/* leftbox */}
@@ -40,22 +22,21 @@ function Login() {
             <div class="account-box account-input-box flex-col">
                 {/* login text */}
                 <div class="padding-bottom">
-                    <h2 class="center">로그인</h2>
-                    <p class="sub-text">로그인 후 서비스를 이용해보세요!</p>
+                    <h2 class="center"><span class="stocodi-color">Stocodi</span>에 오신 걸 환영해요!</h2>
                 </div>
                 {/* social login */}
                 <div class="social-login-box flex-row">
                     <div class="social-login flex-row">
                         <img class="social-login-img" src={google}></img>
-                        <p class="social-text">구글 계정 로그인</p>
+                        <p class="social-text">구글 계정으로 시작</p>
                     </div>
                     <div class="social-login flex-row">
                         <img class="social-login-img" src={naver}></img>
-                        <p class="social-text">네이버 계정 로그인</p>
+                        <p class="social-text">네이버 계정으로 시작</p>
                     </div>
                     <div class="social-login flex-row">
                         <img class="social-login-img" src={kakao}></img>
-                        <p class="social-text">카카오 계정 로그인</p>
+                        <p class="social-text">카카오 계정으로 시작</p>
                     </div>
                 </div>
                 {/* hr */}
@@ -66,22 +47,24 @@ function Login() {
                 </div>
                 {/* input */}
                 <div class="padding-top padding-bottom">
-                    <div class="input-box">
-                        <label class="input-text">이메일 주소</label>
-                        <input class="input" type="text" onChange={(e)=>setEmail(e.target.value)}></input>
-                        <label class="input-text">비밀번호</label>
-                        <input class="input" type="password" onChange={(e)=>setPassword(e.target.value)}></input>
-                        <button class="submit-button" onClick={login}>로그인</button>
-                    </div>
+                    <form class="input-box">
+                        <label class="input-text" for="name">이름</label>
+                        <input class="input" type="text" id="name" name="name"></input>
+                        <label class="input-text" for="email">이메일 주소</label>
+                        <input class="input" type="text" id="email" name="email"></input>
+                        <label class="input-text" for="password">비밀번호</label>
+                        <input class="input" type="text" id="password" name="password"></input>
+                        <button class="submit-button flex-row" type="submit"><span>다음으로</span><img class="arrow-img" src={rightArrow}></img></button>
+                    </form>
                 </div>
-                {/* signup */}
+                {/* login */}
                 <div class="bottom-box">
-                    <p class="sub-text margin-none">아직 계정이 없으신가요?</p>
-                    <a class="link-text" href="#">회원가입</a>
+                    <p class="sub-text margin-none">이미 계정이 있으신가요?</p>
+                    <a class="link-text" href="">로그인</a>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Login;
+export default Signup;
