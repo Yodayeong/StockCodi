@@ -3,6 +3,7 @@ import phone from '../img/phone.png';
 import Group18403 from '../img/Group18403.png'
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 
 
@@ -49,6 +50,7 @@ const Button = ({clickState, name, onClick}) => {
   );
 };
 
+
 function MainPageHead() {
   const [loginClicked, setLoginClicked] = useState(false);
   const [signupClicked, setSignupClicked] = useState(true);
@@ -86,39 +88,111 @@ function MainPageHead() {
   );
 }
 
-function ImageTable(){
-    const [images, setImages] = useState([]);
 
-    useEffect(() => {
-        // 서버에서 이미지 url을 받아온다는 가정
-        const imageUrls = [
-          'https://example.com/image1.jpg',
-          'https://example.com/image2.jpg',
-          'https://example.com/image3.jpg',
-          'https://example.com/image4.jpg',
-        ];
-        setImages(imageUrls);
-      }, []);
-    
-      return (
-        <table>
-          <tbody>
-            <tr>
-              {images.slice(0, 4).map((url, index) => (
-                <td key={index}>
-                  <img src={url} alt={`Image ${index}`} width="200" height="200" />
-                </td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
+
+function ImageTable() {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchYouTubeVideos = async () => {
+      try {
+        const response = await axios.get(
+          'https://www.googleapis.com/youtube/v3/search', {
+            params: {
+              part: 'snippet',
+              channelId: '',
+              key: '',
+              maxResults: 4,
+              type: 'video',
+            },
+          }
+        );
+
+        const videoItems = response.data.items;
+        const videoIds = videoItems.map((video) => video.id.videoId);
+        const videoDetails = await fetchVideoDetails(videoIds);
+
+        const videosWithDetails = videoItems.map((video, index) => ({
+          id: video.id.videoId,
+          snippet: video.snippet,
+          duration: videoDetails[index].contentDetails.duration,
+        }));
+
+        setVideos(videosWithDetails);
+      } catch (error) {
+        console.error('Error fetching YouTube videos:', error);
+      }
+    };
+
+    fetchYouTubeVideos();
+  }, []);
+
+  const fetchVideoDetails = async (videoIds) => {
+    try {
+      const response = await axios.get(
+        'https://www.googleapis.com/youtube/v3/videos', {
+          params: {
+            part: 'contentDetails',
+            id: videoIds.join(','),
+            key: '',
+          },
+        }
       );
+
+      const videoDetails = response.data.items;
+      return videoDetails;
+    } catch (error) {
+      console.error('Error fetching video details:', error);
+      return [];
+    }
+  };
+
+  const formatDuration = (duration) => {
+    const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+    const hours = match[1] ? parseInt(match[1].slice(0, -1)) : 0;
+    const minutes = match[2] ? parseInt(match[2].slice(0, -1)) : 0;
+    const seconds = match[3] ? parseInt(match[3].slice(0, -1)) : 0;
+
+    return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  return (
+    <div className="video-gallery-container">
+      <div className="video-gallery">
+        {videos.map((video, index) => (
+          <div key={index} className="video-item">
+            <a
+              href={`https://www.youtube.com/watch?v=${video.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={video.snippet.thumbnails.medium.url}
+                alt={`Video ${index}`}
+                className="video-thumbnail"
+              />
+            </a>
+            <div className="video-info">
+              <div className="video-title">{video.snippet.title}</div>
+              <div className='video-metadata'>
+                <p className="video-upload">{video.snippet.channelTitle}</p>
+                <p className="video-duration">{formatDuration(video.duration)}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
+
+
+
 
 
 function MainPageBody() {
     return (
-      <div>
+      <div className="video-gallery-container">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div className="main-text">
             투자가 어려우신가요?
@@ -140,12 +214,14 @@ function MainPageBody() {
             style={{ verticalAlign: "bottom", marginRight: "100px"}}
           />
         </div>
-        <div className='contents-text'>
-            교육 컨텐츠
-        </div>
+        <div className='ImgTable'>
+          <div className='contents-text'>
+              교육 컨텐츠
+          </div>
 
-        <div>
-            <ImageTable />
+          <div>
+              <ImageTable />
+          </div>
         </div>
       </div>
     );
