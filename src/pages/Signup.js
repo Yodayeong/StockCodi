@@ -154,6 +154,21 @@ function Signup() {
             array.push(15);
         }
         console.log(array);
+
+        // api 통신
+        // let item = {name, email, password, nickname, phone, birth, array};
+        // let result = await fetch("http://13.125.105.227:8080/member/signup", {
+        //     method: 'POST',
+        //     body:JSON.stringify(item),
+        //     headers:{
+        //         "Content-Type":"application/json",
+        //         "Accept":"application/json"
+        //     },
+        // }).then(res=>{
+        //     console.log(res);
+        // })
+        // result = await result.json();
+        // localStorage.setItem("user-info", JSON.stringify(result))
     }
     
     return (
@@ -312,37 +327,4 @@ function Signup() {
     );
 }
 
-
-// const Elem = ()=>{
-//     const [row1,setRow1] = useState(['에너지','소재','산업재','경기소비재','필수소비재'])
-//     const [row2,setRow2] = useState(['의료','금융','IT','통신서비스','유틸리티'])
-//     const [row3,setRow3] = useState(['종목','종목','종목','종목','종목'])
-    
-    
-    
-    
-//     return (
-
-//     <div>
-//     {row1.map((a,b)=>{
-//         return 
-//         <>
-//         <image  style ={{backgroundColor: "red"}}src={a}/>
-//             {a}
-//         </>
-            
-//     })}
-
-//     {row2.map((a,b)=>{
-
-//     })}
-
-//     {row3.map((a,b)=>{
-
-//     })}
-
-//     </div>
-//     )
-    
-// }
 export default Signup;
