@@ -234,3 +234,8 @@
     width:32rem;
     margin-left:0.5rem;
 }
+
+/* login */
+#login{
+    display:none;
+}

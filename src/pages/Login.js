@@ -10,6 +10,10 @@ import thumbs from '../img/thumbs.png'
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // link
+    const movePage = useNavigate();
+
+    // login
     async function login() {
         console.log(email, password)
         // api 통신
@@ -26,17 +30,14 @@ function Login() {
         // })
         // result = await result.json();
         // localStorage.setItem("user-info", JSON.stringify(result))
+        movePage('/');
     }
-
-    // Signup Link
-    const movePage = useNavigate();
-    const moveHome = useNavigate();
 
     function goSignup() {
         movePage('/signup');
     }
     function goHome() {
-        moveHome('/');
+        movePage('/');
     }
     return (
         <div class="account-background flex-row">

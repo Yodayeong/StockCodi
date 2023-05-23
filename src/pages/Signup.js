@@ -170,21 +170,50 @@ function Signup() {
         // })
         // result = await result.json();
         // localStorage.setItem("user-info", JSON.stringify(result))
+
+        //로그인
+        var inputBox = document.getElementById("input-box2");
+        var login = document.getElementById("login");
+
+        inputBox.style.display = "none";
+        login.style.display = "block";
     }
 
-    // Login Link
+    // link
     const movePage = useNavigate();
 
     function goLogin(){
         movePage('/login');
     }
+    function goHome() {
+        movePage('/');
+    }
+
+    // login
+    async function login() {
+        console.log(email, password)
+        // api 통신
+        // let item = {email, password};
+        // let result = await fetch("http://13.125.105.227:8080/member/login", {
+        //     method: 'POST',
+        //     body:JSON.stringify(item),
+        //     headers:{
+        //         "Content-Type":"application/json",
+        //         "Accept":"application/json"
+        //     },
+        // }).then(res=>{
+        //     console.log(res);
+        // })
+        // result = await result.json();
+        // localStorage.setItem("user-info", JSON.stringify(result))
+        movePage('/');
+    }
     
     return (
-        
         <div class="account-background flex-row">
             {/* leftbox */}
             <div class="account-box left-box">
-                <img class="logo-img" src={logo}></img>
+                <img class="logo-img" src={logo} onClick={goHome}></img>
                 <div class="img-container">
                     <img class="thumbs-img" src={thumbs}></img>
                     {/* <img class="lines-img" src={lines}></img> */}
@@ -328,6 +357,47 @@ function Signup() {
                     </div>
                     {/* submit button */}
                     <button class="submit-button next" onClick={interest}>다음</button>
+                </div>
+                <div id="login" class="account-background flex-row">
+                    {/* rightbox */}
+                    <div class="account-box account-input-box flex-col">
+                        {/* login text */}
+                        <div class="padding-bottom">
+                            <h2 class="center">회원가입 완료!</h2>
+                            <p class="sub-text">로그인 후 서비스를 이용해보세요!</p>
+                        </div>
+                        {/* social login */}
+                        <div class="social-login-box flex-row">
+                            <div class="social-login flex-row">
+                                <img class="social-login-img" src={google}></img>
+                                <p class="social-text">구글 계정 로그인</p>
+                            </div>
+                            <div class="social-login flex-row">
+                                <img class="social-login-img" src={naver}></img>
+                                <p class="social-text">네이버 계정 로그인</p>
+                            </div>
+                            <div class="social-login flex-row">
+                                <img class="social-login-img" src={kakao}></img>
+                                <p class="social-text">카카오 계정 로그인</p>
+                            </div>
+                        </div>
+                        {/* hr */}
+                        <div class="hr-box">
+                            <hr class="hr-style"/>
+                            <p class="margin-none padding-left padding-right sub-text">OR</p>
+                            <hr class="hr-style"/>
+                        </div>
+                        {/* input */}
+                        <div class="padding-top padding-bottom">
+                            <div class="input-box">
+                                <label class="input-text">이메일 주소</label>
+                                <input class="input" type="text" onChange={(e)=>setEmail(e.target.value)}></input>
+                                <label class="input-text">비밀번호</label>
+                                <input class="input" type="password" onChange={(e)=>setPassword(e.target.value)}></input>
+                                <button class="submit-button" onClick={login}>로그인</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
