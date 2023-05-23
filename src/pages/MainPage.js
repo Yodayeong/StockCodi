@@ -53,56 +53,30 @@ const Button = ({clickState, name, onClick}) => {
 
 
 function MainPageHead() {
-  const [loginClicked, setLoginClicked] = useState(false);
-  const [signupClicked, setSignupClicked] = useState(true);
   // link
   const moveLogin = useNavigate();
   const moveSignup = useNavigate();
 
-  const handleLoginClick = () => {
-      if(!loginClicked)
-      {
-        setLoginClicked(!loginClicked);
-        setSignupClicked(!signupClicked);
-        moveLogin('/login');
-      }
-  };
-
-  const handleSignupClick = () => {
-    if (!signupClicked){
-    setLoginClicked(!loginClicked);
-    setSignupClicked(!signupClicked);
-    moveSignup('/signup');
-    }
-  };
-
-  // // Login Link
-  // const moveLogin = useNavigate();
-
-  // function goLogin(){
-  //     moveLogin('/login');
-  // }
-
-  // // Signup Link
-  // const moveSignup = useNavigate();
-
-  // function goSignup(){
-  //     moveSignup('/signup');
-  // }
+  function goLogin(){
+      moveLogin('/login');
+  }
+  function goSignup(){
+      moveSignup('/signup');
+  }
 
   return (
     <div className="header-container">
       <div className="Stocodi">Stocodi</div>
       <CatagoryComponent />
       <div className="Login">
-        <StyledButton clicked={loginClicked} onClick={handleLoginClick}>
+        <div onClick={goLogin}>
           로그인
-        </StyledButton>
+        </div>
       </div>
       <div className="Signup">
-        <StyledButton clicked={signupClicked} onClick={handleSignupClick}>
+        <div onClick={goSignup}>
           회원가입
-        </StyledButton>
+        </div>
       </div>
     </div>
   );

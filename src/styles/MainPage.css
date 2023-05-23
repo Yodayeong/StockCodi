@@ -41,9 +41,28 @@
     font-weight : bold;
 }
 
+/* login / Signup */
 .Login{
     margin-right: 2vw;
+    font-size:14px;
+    color: #7D8790;
 }
+.Login:hover{
+    background-color:#00A969;
+    color:white;
+}
+
+.Signup{
+    margin-right: 2vw;
+    font-size:14px;
+    color: #7D8790;
+}
+.Signup:hover{
+    background-color:#00A969;
+    color:white;
+}
+
+
 .Subheader-container{
     display: flex;
     align-items: center;
