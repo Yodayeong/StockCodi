@@ -44,9 +44,117 @@ function Signup() {
     }
 
     // 관심종목
-    const [isClicked, setIsClicked] = useState(false);
+    const [box1, setBox1] = useState(false);
+    const [box2, setBox2] = useState(false);
+    const [box3, setBox3] = useState(false);
+    const [box4, setBox4] = useState(false);
+    const [box5, setBox5] = useState(false);
+    const [box6, setBox6] = useState(false);
+    const [box7, setBox7] = useState(false);
+    const [box8, setBox8] = useState(false);
+    const [box9, setBox9] = useState(false);
+    const [box10, setBox10] = useState(false);
+    const [box11, setBox11] = useState(false);
+    const [box12, setBox12] = useState(false);
+    const [box13, setBox13] = useState(false);
+    const [box14, setBox14] = useState(false);
+    const [box15, setBox15] = useState(false);
+
+    const handleClick1 = () => {
+        setBox1(!box1);
+    };
+    const handleClick2 = () => {
+        setBox2(!box2);
+    };
+    const handleClick3 = () => {
+        setBox3(!box3);
+    };
+    const handleClick4 = () => {
+        setBox4(!box4);
+    };
+    const handleClick5 = () => {
+        setBox5(!box5);
+    };
+    const handleClick6 = () => {
+        setBox6(!box6);
+    };
+    const handleClick7 = () => {
+        setBox7(!box7);
+    };
+    const handleClick8 = () => {
+        setBox8(!box8);
+    };
+    const handleClick9 = () => {
+        setBox9(!box9);
+    };
+    const handleClick10 = () => {
+        setBox10(!box10);
+    };
+    const handleClick11 = () => {
+        setBox11(!box11);
+    };
+    const handleClick12 = () => {
+        setBox12(!box12);
+    };
+    const handleClick13 = () => {
+        setBox13(!box13);
+    };
+    const handleClick14 = () => {
+        setBox14(!box14);
+    };
+    const handleClick15 = () => {
+        setBox15(!box15);
+    };
     
-  
+    async function interest() {
+        var array = new Array();
+        if(box1) {
+            array.push(1);
+        }
+        if(box2) {
+            array.push(2);
+        }
+        if(box3) {
+            array.push(3);
+        }
+        if(box4) {
+            array.push(4);
+        }
+        if(box5) {
+            array.push(5);
+        }
+        if(box6) {
+            array.push(6);
+        }
+        if(box7) {
+            array.push(7);
+        }
+        if(box8) {
+            array.push(8);
+        }
+        if(box9) {
+            array.push(9);
+        }
+        if(box10) {
+            array.push(10);
+        }
+        if(box11) {
+            array.push(11);
+        }
+        if(box12) {
+            array.push(12);
+        }
+        if(box13) {
+            array.push(13);
+        }
+        if(box14) {
+            array.push(14);
+        }
+        if(box15) {
+            array.push(15);
+        }
+        console.log(array);
+    }
     
     return (
         
@@ -129,76 +237,74 @@ function Signup() {
                         <p class="sub-text flex-row">관심 종목을 선택한 후 맞춤화된 서비스를 만나보세요.</p>
                     </div>
                     {/* interest select */}
-                    <div className='box_wrap' onClick={()=>{setIsClicked(cur=>!cur)}}>
                     <div class="flex-row">
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box1 ? 'clicked' : ''}`} onClick={handleClick1} class="flex-col interest-box">
                             <img class="interest-img" src={thunder}></img>
                             <p class="interest-text">에너지</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box2 ? 'clicked' : ''}`} onClick={handleClick2} class="flex-col interest-box">
                             <img class="interest-img" src={bottle}></img>
                             <p class="interest-text">소재</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box3 ? 'clicked' : ''}`} onClick={handleClick3} class="flex-col interest-box">
                             <img class="interest-img" src={bottle}></img>
                             <p class="interest-text">산업재</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box4 ? 'clicked' : ''}`} onClick={handleClick4} class="flex-col interest-box">
                             <img class="interest-img" src={bottle}></img>
                             <p class="interest-text">경기소비재</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box5 ? 'clicked' : ''}`} onClick={handleClick5} class="flex-col interest-box">
                             <img class="interest-img" src={bottle}></img>
                             <p class="interest-text">필수소비재</p>
                         </div>
                     </div>
                     <div class="flex-row">
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box6 ? 'clicked' : ''}`} onClick={handleClick6} class="flex-col interest-box">
                             <img class="interest-img" src={medical}></img>
                             <p class="interest-text">의료</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box7 ? 'clicked' : ''}`} onClick={handleClick7} class="flex-col interest-box">
                             <img class="interest-img" src={money}></img>
                             <p class="interest-text">금융</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box8 ? 'clicked' : ''}`} onClick={handleClick8} class="flex-col interest-box">
                             <img class="interest-img" src={laptop}></img>
                             <p class="interest-text">IT</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box9 ? 'clicked' : ''}`} onClick={handleClick9} class="flex-col interest-box">
                             <img class="interest-img" src={chat}></img>
                             <p class="interest-text">통신서비스</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box10 ? 'clicked' : ''}`} onClick={handleClick10} class="flex-col interest-box">
                             <img class="interest-img" src={utility}></img>
                             <p class="interest-text">유틸리티</p>
                         </div>
                     </div>
                     <div class="flex-row">
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box11 ? 'clicked' : ''}`} onClick={handleClick11} class="interest-box">
                             <img class="interest-img" src={utility}></img>
                             <p class="interest-text">종목</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box12 ? 'clicked' : ''}`} onClick={handleClick12} class="interest-box">
                             <img class="interest-img" src={utility}></img>
                             <p class="interest-text">종목</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box13 ? 'clicked' : ''}`} onClick={handleClick13} class="interest-box">
                             <img class="interest-img" src={utility}></img>
                             <p class="interest-text">종목</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box14 ? 'clicked' : ''}`} onClick={handleClick14} class="interest-box">
                             <img class="interest-img" src={utility}></img>
                             <p class="interest-text">종목</p>
                         </div>
-                        <div class="flex-col interest-box">
+                        <div className={`interest-box ${box15 ? 'clicked' : ''}`} onClick={handleClick15} class="interest-box">
                             <img class="interest-img" src={utility}></img>
                             <p class="interest-text">종목</p>
                         </div>
-                    </div>
                     </div>
                     {/* submit button */}
-                    <button class="submit-button next">다음</button>
+                    <button class="submit-button next" onClick={interest}>다음</button>
                 </div>
             </div>
         </div>

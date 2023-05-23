@@ -209,12 +209,20 @@
     padding: 1.2rem;
     margin: 0.5rem;
     background-color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .interest-box */
 
-.clicked{
+.interest-box.clicked{
     background-color: #0ECB81;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
 }
 
 .interest-img{
