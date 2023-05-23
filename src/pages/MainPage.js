@@ -21,16 +21,17 @@ const StyledButton = styled.button`
 `;
 
 const CatagoryComponent = () =>{
-  const [selectedCatagory, setSelectedCatagory] = useState(1);
-
-  const handleCategoryChange = (category) =>{
-    setSelectedCatagory(category);
-  };
-
-  return (<div className='Subheader-container'>
-      <div className={selectedCatagory === 1 ? "InvestmentExperimentSelected" : "InvestmentExperiment"} onClick={() => handleCategoryChange(1)}>투자실험</div>
-      <div className={selectedCatagory === 2 ? "StudySelected" : "Study"} onClick={() => handleCategoryChange(2)}>스터디</div>
-      <div className={selectedCatagory === 3 ? "CommunitySelected" : "Community"} onClick={() => handleCategoryChange(3)}>커뮤니티</div>
+  return (
+  <div className='Subheader-container'>    
+    <div className="nav-items">
+      투자실혐
+    </div>
+    <div className="nav-items">
+      스터디
+    </div>
+    <div className="nav-items">
+      커뮤니티
+    </div>
   </div>)
 }
 
@@ -68,16 +69,12 @@ function MainPageHead() {
     <div className="header-container">
       <div className="Stocodi">Stocodi</div>
       <CatagoryComponent />
-      <div className="Login">
-        <div onClick={goLogin}>
+        <div className="account-items" onClick={goLogin}>
           로그인
         </div>
-      </div>
-      <div className="Signup">
-        <div onClick={goSignup}>
+        <div className="account-items" onClick={goSignup}>
           회원가입
         </div>
-      </div>
     </div>
   );
 }

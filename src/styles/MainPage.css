@@ -41,37 +41,41 @@
     font-weight : bold;
 }
 
-/* login / Signup */
-.Login{
-    margin-right: 2vw;
+/* nav-items */
+.nav-items{
+    margin-left: 1rem;
     font-size:14px;
     color: #7D8790;
 }
-.Login:hover{
-    background-color:#00A969;
-    color:white;
+.nav-items:hover{
+    color:#00A969;
 }
 
-.Signup{
-    margin-right: 2vw;
+/* account-items */
+.account-items{
+    margin-left: 1rem;
     font-size:14px;
     color: #7D8790;
 }
-.Signup:hover{
+.account-items:hover{
     background-color:#00A969;
     color:white;
 }
-
 
 .Subheader-container{
     display: flex;
     align-items: center;
 }
+
+/* header-container */
 .header-container {
     display: flex;
     align-items: center;
-    margin-top : 3vh;
-    padding-left: 7vw;
+    position:fixed;
+    right:0;
+    left:7vw;
+    background-color:white;
+    padding:1.2rem 0 1.2rem 0;
 }
 .img1 {
     padding-top : 10vh;
