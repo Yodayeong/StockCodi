@@ -30,15 +30,19 @@ function Login() {
 
     // Signup Link
     const movePage = useNavigate();
+    const moveHome = useNavigate();
 
-    function goSignup(){
+    function goSignup() {
         movePage('/signup');
+    }
+    function goHome() {
+        moveHome('/');
     }
     return (
         <div class="account-background flex-row">
             {/* leftbox */}
             <div class="account-box left-box">
-                <img class="logo-img" src={logo}></img>
+                <img class="logo-img" src={logo} onClick={goHome}></img>
                 <div class="img-container">
                     <img class="thumbs-img" src={thumbs}></img>
                     {/* <img class="lines-img" src={lines}></img> */}
