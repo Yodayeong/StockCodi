@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import '../styles/Account.css'
 import google from '../img/google.png'
 import naver from '../img/naver.png'
@@ -170,6 +171,13 @@ function Signup() {
         // result = await result.json();
         // localStorage.setItem("user-info", JSON.stringify(result))
     }
+
+    // Login Link
+    const movePage = useNavigate();
+
+    function goLogin(){
+        movePage('/login');
+    }
     
     return (
         
@@ -223,6 +231,11 @@ function Signup() {
                         <button class="submit-button flex-row" onClick={signup1}><span>다음으로</span><img class="arrow-img" src={rightArrow}></img></button>
                     </div>
                 </div>
+                {/* login */}
+                <div class="bottom-box flex-row">
+                    <p class="sub-text margin-none">이미 계정이 있으신가요?</p>
+                    <a class="link-text" onClick={goLogin}>로그인</a>
+                </div>
                 </div>
                 {/* input2 */}
                 <div id="input-box">
@@ -237,11 +250,6 @@ function Signup() {
                         <button class="submit-button flex-row" onClick={signup2}><span>회원가입하기</span></button>
                     </div>
                 </div>
-                </div>
-                {/* login */}
-                <div class="bottom-box flex-row">
-                    <p class="sub-text margin-none">이미 계정이 있으신가요?</p>
-                    <a class="link-text" href="">로그인</a>
                 </div>
                 </div>
                 {/* interest rightbox */}

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import '../styles/Account.css'
 import google from '../img/google.png'
 import naver from '../img/naver.png'
@@ -25,6 +26,13 @@ function Login() {
         // })
         // result = await result.json();
         // localStorage.setItem("user-info", JSON.stringify(result))
+    }
+
+    // Signup Link
+    const movePage = useNavigate();
+
+    function goSignup(){
+        movePage('/signup');
     }
     return (
         <div class="account-background flex-row">
@@ -77,8 +85,9 @@ function Login() {
                 {/* signup */}
                 <div class="bottom-box">
                     <p class="sub-text margin-none">아직 계정이 없으신가요?</p>
-                    <a class="link-text" href="#">회원가입</a>
+                    <a class="link-text" onClick={goSignup}>회원가입</a>
                 </div>
+
             </div>
         </div>
     );

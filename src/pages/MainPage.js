@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import '../styles/MainPage.css';
 import phone from '../img/phone.png';
 import Group18403 from '../img/Group18403.png'
@@ -54,12 +55,16 @@ const Button = ({clickState, name, onClick}) => {
 function MainPageHead() {
   const [loginClicked, setLoginClicked] = useState(false);
   const [signupClicked, setSignupClicked] = useState(true);
+  // link
+  const moveLogin = useNavigate();
+  const moveSignup = useNavigate();
 
   const handleLoginClick = () => {
       if(!loginClicked)
       {
         setLoginClicked(!loginClicked);
         setSignupClicked(!signupClicked);
+        moveLogin('/login');
       }
   };
 
@@ -67,8 +72,23 @@ function MainPageHead() {
     if (!signupClicked){
     setLoginClicked(!loginClicked);
     setSignupClicked(!signupClicked);
+    moveSignup('/signup');
     }
   };
+
+  // // Login Link
+  // const moveLogin = useNavigate();
+
+  // function goLogin(){
+  //     moveLogin('/login');
+  // }
+
+  // // Signup Link
+  // const moveSignup = useNavigate();
+
+  // function goSignup(){
+  //     moveSignup('/signup');
+  // }
 
   return (
     <div className="header-container">
