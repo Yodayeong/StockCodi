@@ -1,0 +1,36 @@
+.Mainbodyborder{
+    border: '2px solid #E5E5E5';
+}
+
+.study-page-body{
+    padding:7rem 3rem;
+}
+
+/* search */
+.search-bar {
+    display: flex;
+}
+
+.search-input-container {
+display: flex;
+align-items: center;
+border:1px solid lightgray;
+border-radius: 5rem;
+padding: 8px;
+}
+
+.search-input-container input {
+border: none;
+outline: none;
+flex: 1;
+padding: 0 0 0 1rem;
+width: 60vw;
+}
+
+.search-input-container button {
+background: transparent;
+border: none;
+outline: none;
+cursor: pointer;
+padding: 0 1rem;
+}
