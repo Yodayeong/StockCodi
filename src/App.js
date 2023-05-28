@@ -13,16 +13,15 @@ function App() {
       { /*Routers*/ }
       <BrowserRouter>
         <Routes>
-          <Route path={"/"} element={<MainPage />}></Route>
           <Route path={"/signup"} element={<Signup />}></Route>
           <Route path={"/login"} element={<Login />}></Route>
           <Route path={"/study"} element={<Study />}></Route>
-          <Route path={"/investment"} element={<Investment />}></Route>
+          <Route path={"/"} element={<Investment />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
-
+//<Route path={"/"} element={<MainPage />}></Route>
 export default App;
 

@@ -1,36 +1,85 @@
-.Mainbodyborder{
-    border: '2px solid #E5E5E5';
-}
-
-.study-page-body{
-    padding:7rem 3rem;
-}
-
-/* search */
-.search-bar {
+.header-container {
     display: flex;
-}
-
-.search-input-container {
-display: flex;
-align-items: center;
-border:1px solid lightgray;
-border-radius: 5rem;
-padding: 8px;
-}
-
-.search-input-container input {
-border: none;
-outline: none;
-flex: 1;
-padding: 0 0 0 1rem;
-width: 60vw;
-}
-
-.search-input-container button {
-background: transparent;
-border: none;
-outline: none;
-cursor: pointer;
-padding: 0 1rem;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: white;
+    padding: 1.2rem 0;
+    z-index: 999;
+  }
+  
+  .Stocodi {
+    color: #00A969;
+    margin-right: 2rem;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  
+  .nav-items {
+    margin-left: 1rem;
+    font-size: 14px;
+    color: #7D8790;
+    cursor: pointer;
+  }
+  
+  .nav-items:hover {
+    color: #00A969;
+  }
+  
+  .account-items {
+    margin-left: 1rem;
+    font-size: 14px;
+    color: #7D8790;
+    cursor: pointer;
+  }
+  
+  .account-items:hover {
+    background-color: #00A969;
+    color: white;
+  }
+  
+  .MainBody {
+    display: flex;
+    align-items: center;
+    margin-top: 20vh;
+  }
+  
+  .button-group {
+    display: flex;
+    margin-right: 1rem;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 5rem;
+    padding: 8px;
+  }
+  
+  .search-input-container input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 0 1rem;
+  }
+  
+  .search-input-container button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0 1rem;
+  }
+  
+.MainContainer {
+margin-top: 30vh;
 }
