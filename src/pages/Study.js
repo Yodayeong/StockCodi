@@ -183,6 +183,79 @@ function Banner() {
   );
 }
 
+// Content
+function Content() {
+  return(
+    <div>
+      <div className="flex-row contents">
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+        <div className="content-box">
+          <img className="content-img" src={lecture1}></img>
+          <div className="content-text">
+            <p className="content-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+            <p className="content-writer">박곰희</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function StudyPageBody() {
   return (
     <div className="study-page-body">
@@ -191,6 +264,7 @@ function StudyPageBody() {
         <Toggle />
       </div>
       <Banner />
+      <Content />
     </div>
   );
 }

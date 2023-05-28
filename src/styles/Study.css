@@ -157,3 +157,43 @@
     width:20vw;
     height:10rem;
 }
+
+.ad-img{
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.ad-img:hover{
+    transform: scale(1.05);
+}
+
+/* content */
+.content-box{
+    margin:1rem;
+}
+
+.contents{
+    flex-wrap:wrap;
+}
+
+.content-img{
+    width:28vw;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.content-img:hover{
+    transform: scale(1.05);
+}
+
+.content-title{
+    margin:0.5rem 0 0 0.5rem;
+    font-weight:bold;
+}
+
+.content-writer{
+    margin: 0 0 0 0.5rem;
+    color:gray;
+    font-size:12px;
+    font-weight:bold;
+}

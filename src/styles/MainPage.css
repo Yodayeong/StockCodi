@@ -72,10 +72,10 @@
     display: flex;
     align-items: center;
     position:fixed;
-    right:0;
-    left:7vw;
+    width:100vw;
     background-color:white;
-    padding:1.2rem 0 1.2rem 0;
+    padding:1.2rem 7rem 1.2rem 7rem;
+    z-index:9999;
 }
 .img1 {
     padding-top : 10vh;
