@@ -80,6 +80,11 @@
     padding: 0 1rem;
   }
   
-.MainContainer {
-margin-top: 30vh;
+
+.MainBody{
+  padding-top : 10rem;
+}
+
+.Container{
+    padding : 70rem, 30rem;
 }

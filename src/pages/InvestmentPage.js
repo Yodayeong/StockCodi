@@ -150,11 +150,10 @@ const InvestmentContainer = () => {
       <div className="HeaderContainer">
         <HeaderComponent />
       </div>
-      <div className="MainContainer">
-        <div className="MainBody">
-            <ButtonGroup style={{ flex: 1 }}/>
-            <SearchBar style={{ flex: 1 }}/>
-        </div>
+      <div className="Container">
+      <div className="MainBody">
+          <ButtonGroup style={{ flex: 1 }}/>
+          <SearchBar style={{ flex: 1 }}/>
       </div>
       <Container >
         <TopBox style = {{width: "60%", marginLeft : "2.5vw"}}>
@@ -184,7 +183,9 @@ const InvestmentContainer = () => {
           {/* 추가 정보 컴포넌트 */}
         </InformationContainer>
       </Container>
+      </div>
     </div>
+
   );
 };
 
