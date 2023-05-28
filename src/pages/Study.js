@@ -2,6 +2,10 @@ import { useNavigate } from "react-router-dom";
 import '../styles/Study.css';
 import React, { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
+import ad from '../img/ad.png'
+import lecture1 from '../img/lecture1.png'
+import lecture2 from '../img/lecture2.png'
+import lecture3 from '../img/lecture3.png'
 
 // Nav Bar
 const CatagoryComponent = () => {
@@ -115,6 +119,7 @@ function Search() {
 //       );
 // }
 
+// Toggle
 function Toggle() {
   return (
     <div>
@@ -128,16 +133,69 @@ function Toggle() {
 
 }
 
-function StudyPageBody() {
+// Banner
+function Banner() {
   return (
-    <div class="study-page-body">
-      <div className="flex-row">
-        <Search />
-        <Toggle />
+    <div className="flex-row">
+      {/* lecture-box */}
+      <div className="lecture-box">
+        <p className="banner-title">최신 업데이트 강의</p>
+        <div className="lectures">
+          <div className="lecture">
+            <img className="lecture-img" src={lecture1}></img>
+            <div className="lecture-text">
+              <p className="lecture-title">투자 초보자들이 흔히 하는 5가지 실수</p>
+              <p className="lecture-writer">박곰희</p>
+            </div>
+          </div>
+          <div className="lecture">
+            <img className="lecture-img" src={lecture2}></img>
+            <div className="lecture-text">
+              <p className="lecture-title">초보 주식투자자들이 흔히 하는 실수 박곰희 1부 [후랭이 TV]</p>
+              <p className="lecture-writer">박곰희</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* tag-box */}
+      <div className="tag-box">
+        <p className="banner-title">인기 태그</p>
+        <div className="flex-row">
+          <div className="tag">#투자초보</div>
+          <div className="tag">#포트폴리오</div>
+        </div>
+        <div className="flex-row">
+          <div className="tag">#5000만원</div>
+          <div className="tag">#ETF</div>
+          <div className="tag">#저축</div>
+        </div>
+        <div className="flex-row">
+          <div className="tag">#주식유망종목</div>
+          <div className="tag">#주식투자방법</div>
+        </div>
+      </div>
+      {/* ad-box */}
+      <div className="ad-box">
+        <p className="banner-title">오늘의 이벤트</p>
+        <img className="ad-img" src={ad}></img>
       </div>
     </div>
   );
 }
+
+function StudyPageBody() {
+  return (
+    <div className="study-page-body">
+      <div className="flex-row">
+        <Search />
+        <Toggle />
+      </div>
+      <Banner />
+    </div>
+  );
+}
+
+
 
 function StudyContainer() {
   return (
