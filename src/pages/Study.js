@@ -121,6 +121,7 @@ function Toggle() {
       <select className="form-select" aria-label="Sorting Options">
         <option value="latest">최신순</option>
         <option value="likes">좋아요순</option>
+        <option value="views">조회순</option>
       </select>
     </div>
   );
