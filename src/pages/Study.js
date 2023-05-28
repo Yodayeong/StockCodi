@@ -269,8 +269,6 @@ function StudyPageBody() {
   );
 }
 
-
-
 function StudyContainer() {
   return (
     <div>
