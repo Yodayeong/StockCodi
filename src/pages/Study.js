@@ -73,53 +73,67 @@ function Search() {
 }
 
 // Toggle
+// function Toggle() {
+//     const [contents, setContents] = useState([
+//         { id: 1, title: '컨텐츠 1', likes: 10 },
+//         { id: 2, title: '컨텐츠 2', likes: 5 },
+//         { id: 3, title: '컨텐츠 3', likes: 8 },
+//       ]);
+//       const [isLatest, setIsLatest] = useState(true);
+    
+//       const sortContents = () => {
+//         const sortedContents = [...contents];
+//         if (isLatest) {
+//           sortedContents.sort((a, b) => b.id - a.id); // 최신순 정렬
+//         } else {
+//           sortedContents.sort((a, b) => b.likes - a.likes); // 좋아요순 정렬
+//         }
+//         setContents(sortedContents);
+//       };
+    
+//       const toggleSort = () => {
+//         setIsLatest((prevState) => !prevState);
+//         sortContents(); // 정렬 함수 호출
+//       };
+    
+//       return (
+//         <div>
+//           <div className="sort-toggle">
+//             <button onClick={toggleSort}>
+//               {isLatest ? '최신순' : '좋아요순'}
+//             </button>
+//           </div>
+//           <div className="content-list">
+//             {contents.map((content) => (
+//               <div key={content.id}>
+//                 <h3>{content.title}</h3>
+//                 <p>Likes: {content.likes}</p>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       );
+// }
+
 function Toggle() {
-    const [contents, setContents] = useState([
-        { id: 1, title: '컨텐츠 1', likes: 10 },
-        { id: 2, title: '컨텐츠 2', likes: 5 },
-        { id: 3, title: '컨텐츠 3', likes: 8 },
-      ]);
-      const [isLatest, setIsLatest] = useState(true);
-    
-      const sortContents = () => {
-        const sortedContents = [...contents];
-        if (isLatest) {
-          sortedContents.sort((a, b) => b.id - a.id); // 최신순 정렬
-        } else {
-          sortedContents.sort((a, b) => b.likes - a.likes); // 좋아요순 정렬
-        }
-        setContents(sortedContents);
-      };
-    
-      const toggleSort = () => {
-        setIsLatest((prevState) => !prevState);
-        sortContents(); // 정렬 함수 호출
-      };
-    
-      return (
-        <div>
-          <div className="sort-toggle">
-            <button onClick={toggleSort}>
-              {isLatest ? '최신순' : '좋아요순'}
-            </button>
-          </div>
-          <div className="content-list">
-            {contents.map((content) => (
-              <div key={content.id}>
-                <h3>{content.title}</h3>
-                <p>Likes: {content.likes}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      );
+  return (
+    <div>
+      <select className="form-select" aria-label="Sorting Options">
+        <option value="latest">최신순</option>
+        <option value="likes">좋아요순</option>
+      </select>
+    </div>
+  );
+
 }
 
 function StudyPageBody() {
   return (
     <div class="study-page-body">
-      <Search />
-      <Toggle />
+      <div className="flex-row">
+        <Search />
+        <Toggle />
+      </div>
     </div>
   );
 }
