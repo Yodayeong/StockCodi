@@ -262,6 +262,10 @@ function Content() {
 }
 
 function StudyPageBody() {
+  const movePage = useNavigate();
+  function goCreate() {
+    movePage('/study/create');
+  }
   return (
     <div className="study-page-body">
       <div className="flex-row">
@@ -270,6 +274,7 @@ function StudyPageBody() {
       </div>
       <Banner />
       <Content />
+      <div className="study-create" onClick={goCreate}>강의 업로드하기</div>
     </div>
   );
 }

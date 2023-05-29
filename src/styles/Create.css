@@ -67,3 +67,17 @@
     background-color:rgb(50, 50, 50);
     color:white;
 }
+
+/* link */
+.study-create{
+    display:flex;
+    justify-content:center;
+    margin-left:80vw;
+    padding: 0.5rem 0;
+    color:white;
+    font-weight:bold;
+    border-radius:15px;
+    margin-top:2rem;
+    font-size:12px;
+    background-color:#00A968;
+}
