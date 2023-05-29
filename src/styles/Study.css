@@ -32,23 +32,30 @@
 }
 
 /* toggle */
-.form-select {
-    display: block;
-    width: 20vw;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: gray;
-    background-clip: padding-box;
+select{
+    /* 기본 스타일 초기화 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+
+    /* styles */
+    background-color:white;
     border:1px solid lightgray;
-    border-radius: 5rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius:5rem;
+    width:20vw;
     margin-left:1rem;
+    padding: 0.45rem 1rem;
+    color:gray;
+
+    /* down-arrow */
+    background-image: url("../img/down-arrow.png");
+    background-repeat:no-repeat;
+    background-position:right 15px center;
+    background-size:10px;
 }
 
-.form-select:focus {
-    outline: 0;
+select:focus {
+    outline: none;
 }
   
 /* banner */
