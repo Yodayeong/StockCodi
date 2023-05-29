@@ -227,3 +227,60 @@ font-size: 14px;
     border: solid 0.1px #606060;
     margin-bottom: 15.3vh;
 }
+
+.Row6{
+    margin-left: 5.5vw;
+    width : 50vw;
+    height: 10vh;
+    font : 500px;
+    border: solid 0.1px #606060;
+}
+
+.SlideRow{
+    margin-left: 5.5vw;
+    width : 50vw;
+    height: 6vh;
+    font : 500px;
+    border: solid 0.1px #606060;
+}
+
+.PieChart{
+    margin-left: 5.5vw;
+    width : 35vw;
+    height: 45vh;
+    font : 500px;
+    border: solid 0.1px #606060;
+}
+select{
+    /* 기본 스타일 초기화 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+
+    /* styles */
+    background-color:white;
+    border:1px solid white;
+    border-radius:5rem;
+    width:10rem;
+    margin-top : 0.7vw;
+    color:gray;
+
+    /* down-arrow */
+    background-image: url("../img/down-arrow.png");
+    background-repeat:no-repeat;
+    background-position:right 15px center;
+    background-size:10px;
+}
+.PercentButton {
+    border: 1px solid white;
+    border-radius: 15%;
+    background-color: #F3F3F3;
+    width: 80px;
+    height: 30px;
+    border: none;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 120px;
+    line-height: 2;
+  }
