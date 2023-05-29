@@ -186,6 +186,10 @@ font-size: 14px;
 }
 
 /* banner */
+.banner{
+    margin:4rem 0;
+}
+
 .logo-img{
     width:2rem!important;
     margin-left:0!important;
@@ -209,6 +213,18 @@ font-size: 14px;
     margin-right:1rem;
 }
 
+/* content */
+.content{
+    margin-top: 10rem;
+}
+
+.content-title{
+    text-align:center;
+    color:#00A969;
+    font-size:30px;
+    padding-bottom:2rem;
+}
+
 /* slides */
 .slideshow-container {
     position: relative;
@@ -221,10 +237,16 @@ font-size: 14px;
 }
 
 .slide img {
-    width: 100%;
+    width: 50vw;
     height: auto;
 }
 
 .slide.active {
     display: block;
+}
+  
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

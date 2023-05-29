@@ -3,6 +3,9 @@ import '../styles/MainPage.css';
 import phone from '../img/phone.png'
 import logo from '../img/logo-green.png'
 import Group18403 from '../img/Group18403.png'
+import content from '../img/content.png'
+import content2 from '../img/content2.jpg'
+import content3 from '../img/content3.jpg'
 import React, { useEffect, useState } from 'react';
 
 const CatagoryComponent = () =>{
@@ -154,7 +157,7 @@ function MainPageHead() {
 
 function Banner() {
   return (
-    <div>
+    <div className="banner">
       <div className="flex-row">
         <div className="text-box">
           <img className="logo-img" src={logo}></img>
@@ -167,10 +170,42 @@ function Banner() {
   );
 }
 
+function Content() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [content, content2, content3];
+
+  useEffect(() => {
+    // 슬라이드 변경
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    }, 5000); // 5초(5000ms) 간격으로 전환
+
+    // 컴포넌트 언마운트 시 인터벌 제거
+    return () => {
+      clearInterval(interval);
+    };
+  }, [slides.length]);
+
+  return (
+    <div className="content">
+      <p className="content-title">오늘의 추천 콘텐츠</p>
+      <div className="slideshow-container">
+        {slides.map((slide, index) => (
+          <div className={`slide ${index === currentSlide ? 'active' : ''}`} key={index}>
+            <img className="centered-image" src={slide} alt={`Slide ${index + 1}`} />
+          </div>
+        ))}
+      </div>
+
+    </div>
+  );
+}
+
 function MainPageBody() {
     return (
       <div class="main-body">
         <Banner/>
+        <Content/>
       </div>
     );
 }
