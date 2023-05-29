@@ -53,9 +53,6 @@ function CreatePageHead() {
   );
 }
 
-// Youtube API key
-// AIzaSyD2ktRW2Fofr45rCu_ENCXMNcDKrY9opxY
-
 function CreatePageBody() {
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
@@ -132,14 +129,57 @@ function CreatePageBody() {
     // })
     // result = await result.json();
     // localStorage.setItem("user-info", JSON.stringify(result))
-    movePage('/');
+    // movePage('/');
+
+    // youtube
+    var linkInput = document.getElementById('youtube-link');
+    var thumbnailContainer = document.getElementById('thumbnail-container');
+    var link = linkInput.value;
+
+    // 유튜브 동영상 ID 추출
+    var videoId = extractVideoId(link);
+
+    // 썸네일 이미지 URL 생성
+    var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/0.jpg';
+
+    // 이미지 요소 생성
+    var thumbnailImage = document.createElement('img');
+    thumbnailImage.src = thumbnailUrl;
+
+    // 썸네일 이미지를 컨테이너에 추가
+    thumbnailContainer.innerHTML = '';
+    thumbnailContainer.appendChild(thumbnailImage);
+
+    // 썸네일 이미지를 컨테이너에 추가
+    thumbnailContainer.innerHTML = '';
+    thumbnailContainer.appendChild(thumbnailImage);
+
+    // 썸네일 이미지에 클릭 이벤트 리스너 추가
+    thumbnailImage.addEventListener('click', function() {
+      // 클릭 시 유튜브 영상 페이지로 이동
+      window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
+    });
+  }
+
+  function extractVideoId(link) {
+    // 유튜브 링크에서 동영상 ID 추출
+    var videoId = '';
+  
+    // 정규식을 사용하여 링크에서 동영상 ID 추출
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = link.match(regExp);
+    if (match && match[7].length === 11) {
+      videoId = match[7];
+    }
+  
+    return videoId;
   }
 
   return (
     <div className="study-page-body flex-col">
       <div>
-        <p className="create-title">유튜브 주소</p>
-        <input className="create-input1" type="text" onChange={(e)=>setUrl(e.target.value)}></input>
+        <p className="create-title">유튜브 링크</p>
+        <input id="youtube-link" className="create-input1" type="text" onChange={(e)=>setUrl(e.target.value)}></input>
       </div>
       <div>
         <p className="create-title">강의 제목</p>
@@ -166,6 +206,8 @@ function CreatePageBody() {
         </div>
       </div>
       <div className="create-submit" onClick={create}>영상 업로드 하기</div>
+
+      <div id="thumbnail-container"></div>
     </div>
   );
 }
