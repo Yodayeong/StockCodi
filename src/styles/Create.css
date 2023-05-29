@@ -36,7 +36,7 @@
     margin: 1rem 0 0 1rem;
 }
 
-.create-tag:hover{
+.create-tag.clicked{
     color:white;
     background-color:#00A968;
 }
