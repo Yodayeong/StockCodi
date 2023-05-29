@@ -13,9 +13,12 @@ const CatagoryComponent = () => {
   function goStudy() {
     movePage('/study');
   }
+  function goInvestment() {
+    movePage('/investment');
+  }
   return (
     <div className='Subheader-container'>    
-      <div className="nav-items">
+      <div className="nav-items" onClick={goInvestment}>
         투자실혐
       </div>
       <div className="nav-items" onClick={goStudy}>
