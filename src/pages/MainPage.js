@@ -21,18 +21,23 @@ const StyledButton = styled.button`
 `;
 
 const CatagoryComponent = () =>{
+  const movePage = useNavigate();
+  function goStudy() {
+    movePage('/study');
+  }
   return (
-  <div className='Subheader-container'>    
-    <div className="nav-items">
-      투자실혐
+    <div className='Subheader-container'>    
+      <div className="nav-items">
+        투자실혐
+      </div>
+      <div className="nav-items" onClick={goStudy}>
+        스터디
+      </div>
+      <div className="nav-items">
+        커뮤니티
+      </div>
     </div>
-    <div className="nav-items">
-      스터디
-    </div>
-    <div className="nav-items">
-      커뮤니티
-    </div>
-  </div>)
+  );
 }
 
 
@@ -55,26 +60,28 @@ const Button = ({clickState, name, onClick}) => {
 
 function MainPageHead() {
   // link
-  const moveLogin = useNavigate();
-  const moveSignup = useNavigate();
+  const movePage = useNavigate();
 
-  function goLogin(){
-      moveLogin('/login');
+  function goHome() {
+    movePage('/');
   }
-  function goSignup(){
-      moveSignup('/signup');
+  function goLogin() {
+    movePage('/login');
+  }
+  function goSignup() {
+    movePage('/signup');
   }
 
   return (
     <div className="header-container">
-      <div className="Stocodi">Stocodi</div>
+      <div className="Stocodi" onClick={goHome}>Stocodi</div>
       <CatagoryComponent />
-        <div className="account-items" onClick={goLogin}>
-          로그인
-        </div>
-        <div className="account-items" onClick={goSignup}>
-          회원가입
-        </div>
+      <div className="account-items" onClick={goLogin}>
+        로그인
+      </div>
+      <div className="account-items" onClick={goSignup}>
+        회원가입
+      </div>
     </div>
   );
 }

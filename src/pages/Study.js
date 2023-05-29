@@ -9,12 +9,16 @@ import lecture3 from '../img/lecture3.png'
 
 // Nav Bar
 const CatagoryComponent = () => {
+  const movePage = useNavigate();
+  function goStudy() {
+    movePage('/study');
+  }
   return (
     <div className='Subheader-container'>    
       <div className="nav-items">
         투자실혐
       </div>
-      <div className="nav-items">
+      <div className="nav-items" onClick={goStudy}>
         스터디
       </div>
       <div className="nav-items">
@@ -26,20 +30,21 @@ const CatagoryComponent = () => {
 
 function StudyPageHead() {
   // link
-  const moveLogin = useNavigate();
-  const moveSignup = useNavigate();
+  const movePage = useNavigate();
 
-  function goLogin() {
-    moveLogin('/login');
+  function goHome() {
+    movePage('/');
   }
-  
+  function goLogin() {
+    movePage('/login');
+  }
   function goSignup() {
-    moveSignup('/signup');
+    movePage('/signup');
   }
 
   return (
     <div className="header-container">
-      <div className="Stocodi">Stocodi</div>
+      <div className="Stocodi" onClick={goHome}>Stocodi</div>
       <CatagoryComponent />
       <div className="account-items" onClick={goLogin}>
         로그인
