@@ -179,3 +179,52 @@ font-size: 14px;
     flex: 1;
     padding: 0 10px; /* 각 컬럼 사이의 간격을 조정할 수 있습니다 */
 }
+
+/* styles */
+.main-body{
+    padding:7rem 3rem;
+}
+
+/* banner */
+.logo-img{
+    width:2rem!important;
+    margin-left:0!important;
+    padding-left:1.4rem!important;
+}
+
+.text-box{
+    width:70vw;
+}
+
+.banner-text{
+    color:#00A969;
+    font-size:4rem;
+    margin:0;
+    font-weight:bold;
+    margin-left:1rem;
+}
+
+.banner-img{
+    width:30vw;
+    margin-right:1rem;
+}
+
+/* slides */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+.slide.active {
+    display: block;
+}
