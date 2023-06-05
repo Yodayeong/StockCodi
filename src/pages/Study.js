@@ -1,11 +1,57 @@
 import { useNavigate } from "react-router-dom";
 import '../styles/Study.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import ad from '../img/ad.png'
 import lecture1 from '../img/lecture1.png'
 import lecture2 from '../img/lecture2.png'
 import lecture3 from '../img/lecture3.png'
+
+// Contents
+function ContentList() {
+  const [contents, setContents] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/contents")
+      .then(response => response.json())
+      .then(data => setContents(data))
+  }, []);
+
+  const handleThumbnailClick = (youtubeId) => {
+    window.location.href = 'https://www.youtube.com/watch?v=' + youtubeId;
+  };
+
+  // 이미지 요소 생성
+  // var thumbnailImage = document.createElement('img');
+  // thumbnailImage.src = thumbnailUrl;
+
+  // // 썸네일 이미지를 컨테이너에 추가
+  // thumbnailContainer.innerHTML = '';
+  // thumbnailContainer.appendChild(thumbnailImage);
+
+  // // 썸네일 이미지에 클릭 이벤트 리스너 추가
+  // thumbnailImage.addEventListener('click', function() {
+  //   // 클릭 시 유튜브 영상 페이지로 이동
+  //   window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
+  // });
+
+  return(
+    <div>
+      <div className="flex-row contents">
+        {contents.map(content => (
+          <div className="content-box">
+            <img className="content-img" src={content.thumbnailUrl} onClick={() => handleThumbnailClick(content.youtubeId)}></img>
+            <div className="content-text">
+              <p className="content-title">{content.title}</p>
+              <p className="content-writer">{content.writer}</p>
+            </div>
+          </div>
+            
+        ))}
+      </div>
+    </div>
+  );
+}
 
 // Nav Bar
 const CatagoryComponent = () => {
@@ -273,7 +319,7 @@ function StudyPageBody() {
         <Toggle />
       </div>
       <Banner />
-      <Content />
+      <ContentList />
       <div className="study-create" onClick={goCreate}>강의 업로드하기</div>
     </div>
   );
