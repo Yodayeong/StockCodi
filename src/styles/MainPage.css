@@ -74,7 +74,8 @@
     position:fixed;
     width:100vw;
     background-color:white;
-    padding:1.2rem 7rem 1.2rem 7rem;
+    padding:1.2rem 1.2rem 1.2rem 7rem;
+    margin:0!important;
     z-index:9999;
 }
 .img1 {
@@ -182,12 +183,13 @@ font-size: 14px;
 
 /* styles */
 .main-body{
-    padding:7rem 3rem;
+    /* padding:7rem 3rem; */
 }
 
 /* banner */
 .banner{
-    margin:4rem 0;
+    margin:0;
+    padding:7rem 3rem;
 }
 
 .logo-img{
@@ -216,13 +218,16 @@ font-size: 14px;
 /* content */
 .content{
     margin-top: 10rem;
+    background-color:#1c7251;
 }
 
 .content-title{
-    text-align:center;
-    color:#00A969;
-    font-size:30px;
-    padding-bottom:2rem;
+    padding-top:3rem!important;
+    text-align:center!important;
+    color:white;
+    font-size:35px!important;
+    font-weight:300!important;
+    padding-bottom:2rem!important;
 }
 
 /* slides */
@@ -230,6 +235,8 @@ font-size: 14px;
     position: relative;
     width: 100%;
     overflow: hidden;
+    padding-bottom:3rem!important;
+    margin-bottom:10rem!important;
 }
 
 .slide {

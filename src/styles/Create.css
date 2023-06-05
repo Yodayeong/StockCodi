@@ -1,3 +1,33 @@
+/* nav bar */
+
+/* header-container */
+.header-container {
+    display: flex;
+    align-items: center;
+    position:fixed;
+    width:100vw;
+    background-color:white;
+    padding:1.2rem 7rem 1.2rem 7rem;
+    z-index:9999;
+}
+
+/* account-items */
+.account-items{
+    margin-left: 1rem;
+    font-size:14px;
+    color: #7D8790;
+}
+.account-items:hover{
+    background-color:#00A969;
+    color:white;
+}
+
+.Subheader-container{
+    display: flex;
+    align-items: center;
+}
+
+
 /* create-form */
 .create-title{
     margin:0;

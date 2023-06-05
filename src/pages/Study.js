@@ -42,7 +42,7 @@ function ContentList() {
           <div className="content-box">
             <img className="content-img" src={content.thumbnailUrl} onClick={() => handleThumbnailClick(content.youtubeId)}></img>
             <div className="content-text">
-              <p className="content-title">{content.title}</p>
+              <p className="content-lecture-title">{content.title}</p>
               <p className="content-writer">{content.writer}</p>
             </div>
           </div>
