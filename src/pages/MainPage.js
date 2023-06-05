@@ -136,12 +136,56 @@ function MainPageBody() {
       </div>
     );
 }
+
+function DetailPage() {
+  const movePage = useNavigate();
+  function goStudy() {
+    movePage('/study');
+  }
+  function goInvestment() {
+    movePage('/investment');
+  }
+  return(
+    <div className="detail-page">
+      <h1 className="detail-main">다양한 서비스를 경험해보세요!</h1>
+      <p className="detail-text">스토코디에서 다양한 경험을 얻어가세요.</p>
+
+      <div className="detail-container">
+        <div className="detail-box">
+          <h3 className="small-title">투자실험</h3>
+          <p className="small-text">포트폴리오에서 설정한 자산으로</p>
+          <p className="small-text">모의투자를 경험하실 수 있습니다.</p>
+          <button className="detail-button" onClick={goInvestment}>투자실험 참여하기</button>
+        </div>
+        <div className="detail-box">
+          <h3 className="small-title">스터디</h3>
+          <p className="small-text">다양한 강의를 통해 </p>
+          <p className="small-text">필요한 지식을 쌓을 수 있습니다.</p>
+          <button className="detail-button" onClick={goStudy}>스터디 참여하기</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Footer() {
+  return(
+    <div className="footer">
+      <h1 className="footer-title"><span>Stocodi</span> | 개인정보처리방침 | 이용약관</h1>
+      <p className="footer-text">(주)스토코디 | 대표자: 김재홍 | 사업자번호: 499-81-00612 사업자 정보 확인</p>
+      <p className="footer-text">주소: 경기도 성남시 분당구 대왕판교로 660 유스페이스 1A동 405호</p>
+      <p className="footer-text copyright">@STOCODI.ALL RIGHTS RESERVED</p>
+    </div>
+  );
+}
   
 function MainPageContainer(){
     return(
         <div>
             <MainPageHead />
             <MainPageBody />
+            <DetailPage/>
+            <Footer/>
         </div>
     )
 }
