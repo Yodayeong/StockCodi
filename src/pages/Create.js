@@ -60,7 +60,7 @@ function CreatePageBody() {
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
   const [writer, setWriter] = useState("");
-  const [detail, setDetail] = useState("");
+  const [content, setContent] = useState("");
   const [hashtag1, setHashtag1] = useState(false);
   const [hashtag2, setHashtag2] = useState(false);
   const [hashtag3, setHashtag3] = useState(false);
@@ -94,27 +94,27 @@ function CreatePageBody() {
   const movePage = useNavigate();
 
   async function create() {
-    var array = new Array();
+    var hashtags = new Array();
     if(hashtag1) {
-      array.push(1);
+      hashtags.push(1);
     }
     if(hashtag2) {
-      array.push(2);
+      hashtags.push(2);
     }
     if(hashtag3) {
-      array.push(3);
+      hashtags.push(3);
     }
     if(hashtag4) {
-      array.push(4);
+      hashtags.push(4);
     }
     if(hashtag5) {
-      array.push(5);
+      hashtags.push(5);
     }
     if(hashtag6) {
-      array.push(6);
+      hashtags.push(6);
     }
     if(hashtag7) {
-      array.push(7);
+      hashtags.push(7);
     }
 
     // youtube
@@ -123,10 +123,10 @@ function CreatePageBody() {
     var link = linkInput.value;
 
     // 유튜브 동영상 ID 추출
-    var videoId = extractVideoId(link);
+    var youtubeId = extractVideoId(link);
 
     // 썸네일 이미지 URL 생성
-    var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/0.jpg';
+    var thumbnailUrl = 'https://img.youtube.com/vi/' + youtubeId + '/0.jpg';
 
     // // 이미지 요소 생성
     // var thumbnailImage = document.createElement('img');
@@ -142,22 +142,25 @@ function CreatePageBody() {
     //   window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
     // });
     
-    console.log(videoId, title, writer, detail, array);
+    console.log(youtubeId, title, writer, content, hashtags);
     // api 통신
-    // let item = {videoId, title, writer, detail, array};
-    // let result = await fetch("http://13.125.105.227:8080/member/login", {
-    //     method: 'POST',
-    //     body:JSON.stringify(item),
-    //     headers:{
-    //         "Content-Type":"application/json",
-    //         "Accept":"application/json"
-    //     },
-    // }).then(res=>{
-    //     console.log(res);
-    // })
-    // result = await result.json();
-    // localStorage.setItem("user-info", JSON.stringify(result))
+    let item = {youtubeId, title, writer, content, hashtags};
+    let response = await fetch("http://localhost:8080/contents/new", {
+        method: 'POST',
+        body:JSON.stringify(item),
+        headers:{
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+    });
+    // let result = await Response.json();
+    // localStorage.setItem("user-info", JSON.stringify(result));
     movePage('/');
+
+    // result = await result.json();
+    // console.log(result);
+    // localStorage.setItem("user-info", JSON.stringify(result))
+    // movePage('/');
   }
 
   function extractVideoId(link) {
@@ -190,7 +193,7 @@ function CreatePageBody() {
       </div>
       <div>
         <p className="create-title">상세 설명</p>
-        <textarea className="create-input2" onChange={(e)=>setDetail(e.target.value)}></textarea>
+        <textarea className="create-input2" onChange={(e)=>setContent(e.target.value)}></textarea>
       </div>
       <div>
         <p className="create-title">해시태그 설정</p>
