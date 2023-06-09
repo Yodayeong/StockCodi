@@ -74,7 +74,8 @@
     position:fixed;
     width:100vw;
     background-color:white;
-    padding:1.2rem 7rem 1.2rem 7rem;
+    padding:1.2rem 1.2rem 1.2rem 7rem;
+    margin:0!important;
     z-index:9999;
 }
 .img1 {
@@ -182,12 +183,13 @@ font-size: 14px;
 
 /* styles */
 .main-body{
-    padding:7rem 3rem;
+    /* padding:7rem 3rem; */
 }
 
 /* banner */
 .banner{
-    margin:4rem 0;
+    margin:0;
+    padding:7rem 3rem!important;
 }
 
 .logo-img{
@@ -216,13 +218,18 @@ font-size: 14px;
 /* content */
 .content{
     margin-top: 10rem;
+    background-color: #00A969;
+    padding-top:2rem;
+    padding-bottom:2rem;
 }
 
 .content-title{
-    text-align:center;
-    color:#00A969;
-    font-size:30px;
-    padding-bottom:2rem;
+    /* padding-top:3rem!important; */
+    text-align:center!important;
+    color:white;
+    font-size:35px!important;
+    font-weight:300!important;
+    padding-bottom:1rem!important;
 }
 
 /* slides */
@@ -230,6 +237,9 @@ font-size: 14px;
     position: relative;
     width: 100%;
     overflow: hidden;
+    padding-bottom:3rem!important;
+    /* margin-bottom:10rem!important; */
+    padding-top:2rem;
 }
 
 .slide {
@@ -239,6 +249,9 @@ font-size: 14px;
 .slide img {
     width: 50vw;
     height: auto;
+    /* border:2px solid #1c8b60; */
+    /* box-shadow:7px 7px 6px rgb(111, 111, 111); */
+    border-radius:10px;
 }
 
 .slide.active {
@@ -249,4 +262,82 @@ font-size: 14px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* footer */
+.footer{
+    background-color: rgb(51, 51, 51);
+    padding:2rem 7rem;
+}
+
+.footer-title{
+    color:white;
+    font-weight:300;
+    font-size:20px;
+    letter-spacing: 1.5px;
+}
+
+.footer-text{
+    color:white;
+    margin:0;
+    font-weight:lighter;
+    font-size:14px;
+    letter-spacing: 1.5px;
+    margin-bottom:0.2rem;
+}
+
+.copyright{
+    margin-top:1rem;
+    font-weight:300;
+}
+
+/* detail page */
+.detail-page{
+    padding:4rem 7rem;
+}
+
+.detail-main{
+    margin-bottom:0.5rem;
+    font-weight:500;
+}
+
+.detail-text{
+    color:gray;
+    margin:0;
+}
+
+.detail-container{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-box{
+    width:30vw;
+    padding:3rem;
+    border:1px solid lightgray;
+    box-shadow:4px 4px 6px rgb(224, 224, 224);
+    margin:2rem;
+    margin-top:5rem;
+    border-radius:10px;
+}
+
+.small-title{
+    margin:0;
+    margin-bottom:0.5rem;
+}
+
+.small-text{
+    margin:0;
+    color:gray;
+}
+
+.detail-button{
+    margin-top:2rem;
+    background-color:#00A969;
+    color:white;
+    border:none;
+    padding:1rem;
+    border-radius:5rem;
 }

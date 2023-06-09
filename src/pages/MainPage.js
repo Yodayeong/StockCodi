@@ -8,6 +8,59 @@ import content2 from '../img/content2.jpg'
 import content3 from '../img/content3.jpg'
 import React, { useEffect, useState } from 'react';
 
+function ContentList() {
+  const [contents, setContents] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/")
+      .then((response) => response.json())
+      .then((data) => setContents(data));
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % contents.length);
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [contents]);
+
+  const slides = [
+    contents[0]?.thumbnailUrl,
+    contents[1]?.thumbnailUrl,
+    contents[2]?.thumbnailUrl,
+  ];
+
+  const handleSlideClick = (index) => {
+    const content = contents[index];
+    window.location.href = 'https://www.youtube.com/watch?v=' + content.youtubeId;
+  };
+
+  return (
+    <div className="content">
+      <p className="content-title">오늘의 추천 콘텐츠</p>
+      <div className="slideshow-container">
+        {slides.map((slide, index) => (
+          <div
+            className={`slide ${index === currentSlide ? "active" : ""}`}
+            key={index}
+            onClick={() => handleSlideClick(index)}
+          >
+            <img
+              className="centered-image"
+              src={slide}
+              alt={`Slide ${index + 1}`}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const CatagoryComponent = () =>{
   const movePage = useNavigate();
   function goStudy() {
@@ -59,102 +112,6 @@ function MainPageHead() {
   );
 }
 
-// function ImageTable() {
-//   const [videos, setVideos] = useState([]);
-
-//   useEffect(() => {
-//     const fetchYouTubeVideos = async () => {
-//       try {
-//         const response = await axios.get(
-//           'https://www.googleapis.com/youtube/v3/search', {
-//             params: {
-//               part: 'snippet',
-//               channelId: '',
-//               key: '',
-//               maxResults: 4,
-//               type: 'video',
-//             },
-//           }
-//         );
-
-//         const videoItems = response.data.items;
-//         const videoIds = videoItems.map((video) => video.id.videoId);
-//         const videoDetails = await fetchVideoDetails(videoIds);
-
-//         const videosWithDetails = videoItems.map((video, index) => ({
-//           id: video.id.videoId,
-//           snippet: video.snippet,
-//           duration: videoDetails[index].contentDetails.duration,
-//         }));
-
-//         setVideos(videosWithDetails);
-//       } catch (error) {
-//         console.error('Error fetching YouTube videos:', error);
-//       }
-//     };
-
-//     fetchYouTubeVideos();
-//   }, []);
-
-//   const fetchVideoDetails = async (videoIds) => {
-//     try {
-//       const response = await axios.get(
-//         'https://www.googleapis.com/youtube/v3/videos', {
-//           params: {
-//             part: 'contentDetails',
-//             id: videoIds.join(','),
-//             key: '',
-//           },
-//         }
-//       );
-
-//       const videoDetails = response.data.items;
-//       return videoDetails;
-//     } catch (error) {
-//       console.error('Error fetching video details:', error);
-//       return [];
-//     }
-//   };
-
-//   const formatDuration = (duration) => {
-//     const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
-//     const hours = match[1] ? parseInt(match[1].slice(0, -1)) : 0;
-//     const minutes = match[2] ? parseInt(match[2].slice(0, -1)) : 0;
-//     const seconds = match[3] ? parseInt(match[3].slice(0, -1)) : 0;
-
-//     return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-//   };
-
-//   return (
-//     <div className="video-gallery-container">
-//       <div className="video-gallery">
-//         {videos.map((video, index) => (
-//           <div key={index} className="video-item">
-//             <a
-//               href={`https://www.youtube.com/watch?v=${video.id}`}
-//               target="_blank"
-//               rel="noopener noreferrer"
-//             >
-//               <img
-//                 src={video.snippet.thumbnails.medium.url}
-//                 alt={`Video ${index}`}
-//                 className="video-thumbnail"
-//               />
-//             </a>
-//             <div className="video-info">
-//               <div className="video-title">{video.snippet.title}</div>
-//               <div className='video-metadata'>
-//                 <p className="video-upload">{video.snippet.channelTitle}</p>
-//                 <p className="video-duration">{formatDuration(video.duration)}</p>
-//               </div>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
 function Banner() {
   return (
     <div className="banner">
@@ -170,44 +127,56 @@ function Banner() {
   );
 }
 
-function Content() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [content, content2, content3];
-
-  useEffect(() => {
-    // 슬라이드 변경
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000); // 5초(5000ms) 간격으로 전환
-
-    // 컴포넌트 언마운트 시 인터벌 제거
-    return () => {
-      clearInterval(interval);
-    };
-  }, [slides.length]);
-
-  return (
-    <div className="content">
-      <p className="content-title">오늘의 추천 콘텐츠</p>
-      <div className="slideshow-container">
-        {slides.map((slide, index) => (
-          <div className={`slide ${index === currentSlide ? 'active' : ''}`} key={index}>
-            <img className="centered-image" src={slide} alt={`Slide ${index + 1}`} />
-          </div>
-        ))}
-      </div>
-
-    </div>
-  );
-}
 
 function MainPageBody() {
     return (
       <div class="main-body">
         <Banner/>
-        <Content/>
+        <ContentList/>
       </div>
     );
+}
+
+function DetailPage() {
+  const movePage = useNavigate();
+  function goStudy() {
+    movePage('/study');
+  }
+  function goInvestment() {
+    movePage('/investment');
+  }
+  return(
+    <div className="detail-page">
+      <h1 className="detail-main">다양한 서비스를 경험해보세요!</h1>
+      <p className="detail-text">스토코디에서 다양한 경험을 얻어가세요.</p>
+
+      <div className="detail-container">
+        <div className="detail-box">
+          <h3 className="small-title">투자실험</h3>
+          <p className="small-text">포트폴리오에서 설정한 자산으로</p>
+          <p className="small-text">모의투자를 경험하실 수 있습니다.</p>
+          <button className="detail-button" onClick={goInvestment}>투자실험 참여하기</button>
+        </div>
+        <div className="detail-box">
+          <h3 className="small-title">스터디</h3>
+          <p className="small-text">다양한 강의를 통해 </p>
+          <p className="small-text">필요한 지식을 쌓을 수 있습니다.</p>
+          <button className="detail-button" onClick={goStudy}>스터디 참여하기</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Footer() {
+  return(
+    <div className="footer">
+      <h1 className="footer-title"><span>Stocodi</span> | 개인정보처리방침 | 이용약관</h1>
+      <p className="footer-text">(주)스토코디 | 대표자: 김재홍 | 사업자번호: 499-81-00612 사업자 정보 확인</p>
+      <p className="footer-text">주소: 경기도 성남시 분당구 대왕판교로 660 유스페이스 1A동 405호</p>
+      <p className="footer-text copyright">@STOCODI.ALL RIGHTS RESERVED</p>
+    </div>
+  );
 }
   
 function MainPageContainer(){
@@ -215,6 +184,8 @@ function MainPageContainer(){
         <div>
             <MainPageHead />
             <MainPageBody />
+            <DetailPage/>
+            <Footer/>
         </div>
     )
 }

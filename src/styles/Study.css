@@ -1,3 +1,32 @@
+/* nav bar */
+
+/* header-container */
+.header-container {
+    display: flex;
+    align-items: center;
+    position:fixed;
+    width:100vw;
+    background-color:white;
+    padding:1.2rem 7rem 1.2rem 7rem;
+    z-index:9999;
+}
+
+/* account-items */
+.account-items{
+    margin-left: 1rem;
+    font-size:14px;
+    color: #7D8790;
+}
+.account-items:hover{
+    background-color:#00A969;
+    color:white;
+}
+
+.Subheader-container{
+    display: flex;
+    align-items: center;
+}
+
 .study-page-body{
     padding:7rem 3rem;
 }
@@ -193,8 +222,9 @@ select:focus {
     transform: scale(1.05);
 }
 
-.content-title{
+.content-lecture-title{
     margin:0.5rem 0 0 0.5rem;
+    color:#00A968;
     font-weight:bold;
     font-size:20px;
     padding-bottom:0;

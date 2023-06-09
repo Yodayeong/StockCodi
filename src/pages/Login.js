@@ -17,7 +17,8 @@ function Login() {
     async function login() {
         console.log(email, pwd)
         // api 통신
-        // let item = {email, pwd};
+        let item = {email, pwd};
+        console.log(item, typeof email, typeof pwd);
         // let result = await fetch("http://13.125.105.227:8080/member/login", {
         //     method: 'POST',
         //     body:JSON.stringify(item),
