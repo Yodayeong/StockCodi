@@ -881,6 +881,7 @@ function Mainbody2() {
           <div className="SlideRow" style={{ borderRadius: '0 0 20px 20px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', border : 'none' }}>
             {/* 마지막 row 내용 */}
           </div>
+          <div style={{marginTop : '50px'}}></div>
         </div>
         </div>
         <div className="PieChart">
@@ -920,6 +921,9 @@ function CreateContainer() {
     <div style={{display: 'flex', flexDirection: 'column'}}>
       <CreatePageHead />
       <CreatePageBody />
+      <div style={{height : '50px'}}>
+        
+      </div>
     </div>
   );
 }
