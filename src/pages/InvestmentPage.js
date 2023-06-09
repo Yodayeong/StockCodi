@@ -821,44 +821,67 @@ function Mainbody2() {
     return (
       <div style={{ marginTop: '15vh', display: 'flex' }}>
         <div>
-          <div className="Row6">
-            총 평가자산 보유현금 누적수익률 평가수익금 주식평가금
-            <br />
-            {data[0]}원      {data[1]}원      {data[2]}%     {data[3]}       {data[4]}
+        <div className="Row6" style={{marginBottom : '35px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)'}}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginTop : '30px', marginLeft : '35px'}}>
+            <div style={{ marginRight: '88px', marginTop : '25px', fontSize : '10px'}}>총 평가자산</div>
+            <div style={{ marginRight: '103px', marginTop : '25px', fontSize : '10px' }}>보유현금</div>
+            <div style={{ marginRight: '79px', marginTop : '25px', fontSize : '10px' }}>누적수익률</div>
+            <div style={{ marginRight: '40px', marginTop : '25px', fontSize : '10px' }}>평가수익금</div>
+            <div style={{marginLeft: '25px', marginTop : '25px', fontSize : '10px'}}>주식평가금</div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>
-            <div className="SlideRow">
-                <div>종목</div>
-                <div>평가손익</div>
-                <div>잔고수량</div>
-                <div>평균매입가</div>
-                <div>매도가</div>
-                <div>손익분기매입가</div>
-                <br />
-                <div>수익률</div>
-                <div>평가금액</div>
-                <div>현재가</div>
-                <div>매도손익</div>
-                <div>본전가</div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginTop : '14px', marginLeft : '35px'}}> 
+            <div style={{color: '#00A968', fontSize : '18px', marginRight: '40px', fontWeight : "bold" }}>{data[0]}원</div>
+            <div style={{fontSize : '18px', marginRight: '40px' }}>{data[1]}원</div>
+            <div style={{fontSize : '18px', marginLeft: '10px', marginRight: '40px' }}>{data[2]}%</div>
+            <div style={{fontSize : '18px', marginLeft: '65px',  marginRight: '40px' }}>{data[3]}</div>
+            <div style={{fontSize : '18px', marginLeft: '65px'}}>{data[4] }</div>
+          </div>
+        </div>
+          
+          
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>
+        <div className="SlideRow" style={{ borderRadius: '20px 20px 0 0', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', borderBottom: '1px solid #DBDBDB', borderLeft: 'none', borderRight: 'none', borderTop: 'none' }}>
+          <div style={{ borderRadius: '20px 20px 0 0' }}>
+            <div style={{ fontSize: '12px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginLeft: '150px', marginTop: '10px' }}>
+              <div style={{ marginRight: '45px' }}>평가손익</div>
+              <div style={{ marginRight: '45px' }}>잔고수량</div>
+              <div style={{ marginRight: '45px' }}>평균매입가</div>
+              <div style={{ marginRight: '57px' }}>매도가</div>
+              <div>손익분기매입가</div>
             </div>
-            {/* 데이터를 기반으로 화면에 표시 */}
-            {data.map((item, index) => (
-              <div className="SlideRow" key={index}>
-                <div>{item.종목}</div>
-                <div>{item.평가손익}</div>
-                <div>{item.잔고수량}</div>
-                <div>{item.평균매입가}</div>
-                <div>{item.매도가}</div>
-                <div>{item.손익분기매입가}</div>
-                <br />
-                <div>{item.수익률}</div>
-                <div>{item.평가금액}</div>
-                <div>{item.현재가}</div>
-                <div>{item.매도손익}</div>
-                <div>{item.본전가}</div>
-              </div>
-            ))}
+            <div>
+              <div style={{ marginTop: "5px", marginLeft: "42px", fontSize: "11px", fontWeight : 'bold'}}>종목</div>
+            </div>
+            <div style={{ fontSize: "12px", display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginLeft: '150px', marginTop: '3px' }}>
+              <div style={{ marginRight: '58px' }}>수익률</div>
+              <div style={{ marginRight: '45px' }}>평가금액</div>
+              <div style={{ marginRight: '68px' }}>현재가</div>
+              <div style={{ marginRight: '45px' }}>매도손익</div>
+              <div style={{ marginRight: '45px' }}>본전가</div>
+            </div>
           </div>
+          </div>
+          {/* 데이터를 기반으로 화면에 표시 */}
+          {data.map((item, index) => (
+            <div className="SlideRow" key={index}>
+              <div>{item.종목}</div>
+              <div>{item.평가손익}</div>
+              <div>{item.잔고수량}</div>
+              <div>{item.평균매입가}</div>
+              <div>{item.매도가}</div>
+              <div>{item.손익분기매입가}</div>
+              <br />
+              <div>{item.수익률}</div>
+              <div>{item.평가금액}</div>
+              <div>{item.현재가}</div>
+              <div>{item.매도손익}</div>
+              <div>{item.본전가}</div>
+            </div>
+          ))}
+          <div className="SlideRow" style={{ borderRadius: '0 0 20px 20px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', border : 'none' }}>
+            {/* 마지막 row 내용 */}
+          </div>
+        </div>
         </div>
         <div className="PieChart">
             <PieChart />
