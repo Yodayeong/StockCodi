@@ -588,16 +588,16 @@ function StockChart() {
   
 
 function Toggle() {
-    return (
-    <div>
-        <select aria-label="Sorting Options">
-        <option value="first">유의 포트폴리오_1</option>
-        <option value="second">유의 포트폴리오_2</option>
-        <option value="third">유의 포트폴리오_3</option>
-        </select>
-    </div>
-    );
-}
+      return (
+      <div>
+          <select style={{fontWeight:'bold', width: '130px', fontSize: '10px', marginLeft: '10px', border: 'none'}} aria-label="Sorting Options">
+          <option value="first">유의 포트폴리오_1</option>
+          <option value="second">유의 포트폴리오_2</option>
+          <option value="third">유의 포트폴리오_3</option>
+          </select>
+      </div>
+      );
+  }
 
 function TextFieldWithButtons({ value, onChange, onLeftButtonClick, onRightButtonClick }) {
     return (
@@ -719,10 +719,10 @@ function Mainbody1(){
                 </div>
             </div>
             <div style={{display: 'grid', gridTemplateColumns: '1fr', marginTop : '1vh'}}>
-                <div className="Row4"><Toggle style = {{width:'10px'}}/></div>
+                <div className="Row4"><Toggle /></div>
                 <div className="Row5">
-                    <div style = {{marginTop : '7vh'}}>
-                        <div style = {{marginLeft : '1vw'}}>
+                    <div style = {{marginTop : '4vh'}}>
+                        <div style = {{marginLeft : '0.5vw'}}>
                             <TextFieldWithButtons
                                 value={text1}
                                 onChange={handleChange1}
@@ -730,7 +730,7 @@ function Mainbody1(){
                                 onRightButtonClick={() => handleRightButtonClick('text1')}
                             />
                         </div>
-                        <div style = {{marginLeft : '1vw', marginTop : '1vh'}}>
+                        <div style = {{marginLeft : '0.5vw', marginTop : '1vh'}}>
                             <TextFieldWithButtons
                                 value={text2}
                                 onChange={handleChange2}
@@ -753,7 +753,7 @@ function Mainbody1(){
                             100%
                         </button>
                     </div>
-                    <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 20px', marginTop : '10px', fontSize : '12px'}}>
                         <div>
                             주문단가
                         </div>
@@ -761,13 +761,27 @@ function Mainbody1(){
                             0원
                         </div>
                     </div>
-                    <div>
-                        주문총액 0원
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 20px', marginTop : '10px', fontSize : '12px'}}>
+                        <div>주문총액</div>
+                        <div>0원</div> 
                     </div>
-                    <StyledButton>
-                    매수하기
-                    </StyledButton>
-                </div>
+                    <button
+        style={{
+          borderRadius: '20px',
+          backgroundColor: '#00A968',
+          border: 'none',
+          textAlign: 'center',
+          display: 'block',
+          margin: '0 auto',
+          width: '250px',
+          height: '40px',
+          color: 'white',
+          marginTop: '18px'
+        }}
+      >
+                      매수하기
+                    </button>
+                </div>  
                 
             </div>
         </div>
@@ -870,7 +884,7 @@ function CreatePageBody() {
                 </div>
             </div>
             <div>
-                <div>
+                <div style = {{border: '1px solid white', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', marginTop: '20vh', marginLeft: '3vw', marginRight: '3vw'}}>
                     <Mainbody2 />
                 </div>
             </div>

@@ -284,3 +284,7 @@ select{
     width: 120px;
     line-height: 2;
   }
+
+  .ToggleStyle{
+    width: 100px !important;; 
+  }
