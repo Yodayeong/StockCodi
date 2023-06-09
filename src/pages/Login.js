@@ -9,15 +9,15 @@ import thumbs from '../img/thumbs.png'
 
 function Login() {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [pwd, setPwd] = useState("");
     // link
     const movePage = useNavigate();
 
     // login
     async function login() {
-        console.log(email, password)
+        console.log(email, pwd)
         // api 통신
-        // let item = {email, password};
+        // let item = {email, pwd};
         // let result = await fetch("http://13.125.105.227:8080/member/login", {
         //     method: 'POST',
         //     body:JSON.stringify(item),
@@ -83,7 +83,7 @@ function Login() {
                         <label class="input-text">이메일 주소</label>
                         <input class="input" type="text" onChange={(e)=>setEmail(e.target.value)}></input>
                         <label class="input-text">비밀번호</label>
-                        <input class="input" type="password" onChange={(e)=>setPassword(e.target.value)}></input>
+                        <input class="input" type="password" onChange={(e)=>setPwd(e.target.value)}></input>
                         <button class="submit-button" onClick={login}>로그인</button>
                     </div>
                 </div>

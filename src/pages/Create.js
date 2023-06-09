@@ -10,9 +10,12 @@ const CatagoryComponent = () => {
   function goStudy() {
     movePage('/study');
   }
+  function goInvestment() {
+    movePage('/investment');
+  }
   return (
     <div className='Subheader-container'>    
-      <div className="nav-items">
+      <div className="nav-items" onClick={goInvestment}>
         투자실혐
       </div>
       <div className="nav-items" onClick={goStudy}>
@@ -114,9 +117,34 @@ function CreatePageBody() {
       array.push(7);
     }
 
-    console.log(url, title, writer, detail, array);
+    // youtube
+    var linkInput = document.getElementById('youtube-link');
+    var thumbnailContainer = document.getElementById('thumbnail-container');
+    var link = linkInput.value;
+
+    // 유튜브 동영상 ID 추출
+    var videoId = extractVideoId(link);
+
+    // 썸네일 이미지 URL 생성
+    var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/0.jpg';
+
+    // // 이미지 요소 생성
+    // var thumbnailImage = document.createElement('img');
+    // thumbnailImage.src = thumbnailUrl;
+
+    // // 썸네일 이미지를 컨테이너에 추가
+    // thumbnailContainer.innerHTML = '';
+    // thumbnailContainer.appendChild(thumbnailImage);
+
+    // // 썸네일 이미지에 클릭 이벤트 리스너 추가
+    // thumbnailImage.addEventListener('click', function() {
+    //   // 클릭 시 유튜브 영상 페이지로 이동
+    //   window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
+    // });
+    
+    console.log(videoId, title, writer, detail, array);
     // api 통신
-    // let item = {url, title, writer, detail, array};
+    // let item = {videoId, title, writer, detail, array};
     // let result = await fetch("http://13.125.105.227:8080/member/login", {
     //     method: 'POST',
     //     body:JSON.stringify(item),
@@ -129,36 +157,7 @@ function CreatePageBody() {
     // })
     // result = await result.json();
     // localStorage.setItem("user-info", JSON.stringify(result))
-    // movePage('/');
-
-    // youtube
-    var linkInput = document.getElementById('youtube-link');
-    var thumbnailContainer = document.getElementById('thumbnail-container');
-    var link = linkInput.value;
-
-    // 유튜브 동영상 ID 추출
-    var videoId = extractVideoId(link);
-
-    // 썸네일 이미지 URL 생성
-    var thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/0.jpg';
-
-    // 이미지 요소 생성
-    var thumbnailImage = document.createElement('img');
-    thumbnailImage.src = thumbnailUrl;
-
-    // 썸네일 이미지를 컨테이너에 추가
-    thumbnailContainer.innerHTML = '';
-    thumbnailContainer.appendChild(thumbnailImage);
-
-    // 썸네일 이미지를 컨테이너에 추가
-    thumbnailContainer.innerHTML = '';
-    thumbnailContainer.appendChild(thumbnailImage);
-
-    // 썸네일 이미지에 클릭 이벤트 리스너 추가
-    thumbnailImage.addEventListener('click', function() {
-      // 클릭 시 유튜브 영상 페이지로 이동
-      window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
-    });
+    movePage('/');
   }
 
   function extractVideoId(link) {
@@ -207,7 +206,7 @@ function CreatePageBody() {
       </div>
       <div className="create-submit" onClick={create}>영상 업로드 하기</div>
 
-      <div id="thumbnail-container"></div>
+      {/* <div id="thumbnail-container"></div> */}
     </div>
   );
 }
