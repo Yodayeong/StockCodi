@@ -142,9 +142,9 @@ function CreatePageBody() {
     //   window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
     // });
     
-    console.log(youtubeId, title, writer, content, hashtags);
+    console.log(youtubeId, thumbnailUrl, title, writer, content, hashtags);
     // api 통신
-    let item = {youtubeId, title, writer, content, hashtags};
+    let item = {youtubeId, thumbnailUrl, title, writer, content, hashtags};
     let response = await fetch("http://localhost:8080/contents/new", {
         method: 'POST',
         body:JSON.stringify(item),
