@@ -141,16 +141,27 @@ function PieChart() {
 
 
 // Search
-function Search() {
+function Search({ onSearchResults }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
   const handleSearch = () => {
-    // 검색 기능을 수행하는 로직을 작성하세요
-    console.log('Search:', searchQuery);
+    // 검색어를 서버로 전송하는 로직을 작성합니다.
+    axios.get(`/search?query=${searchQuery}`)
+      .then((response) => {
+        // 서버로부터 받은 응답을 처리합니다.
+        console.log(response.data);
+        setSearchResults(response.data);
+        onSearchResults(response.data); // 검색 결과를 전달합니다.
+      })
+      .catch((error) => {
+        // 에러 처리를 수행합니다.
+        console.error(error);
+      });
   };
 
   return (
@@ -158,287 +169,26 @@ function Search() {
       <div className="search-input-container">
         <input type="text" placeholder="종목 검색" value={searchQuery} onChange={handleInputChange} />
         <button onClick={handleSearch}>
-          <FiSearch />
+          검색
         </button>
       </div>
+
+      {searchResults.length > 0 && (
+        <div className="search-results">
+          <h2>검색 결과</h2>
+          <ul>
+            {searchResults.map((result) => (
+              <li key={result.id}>{result.name}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
 
 
-// function StockChart() {
-//     const [series, setSeries] = useState([
-//       {
-//         data: [
-//             {
-//                 x: new Date(1538778600000),
-//                 y: [6629.81, 6650.5, 6623.04, 6633.33]
-//               },
-//               {
-//                 x: new Date(1538780400000),
-//                 y: [6632.01, 6643.59, 6620, 6630.11]
-//               },
-//               {
-//                 x: new Date(1538782200000),
-//                 y: [6630.71, 6648.95, 6623.34, 6635.65]
-//               },
-//               {
-//                 x: new Date(1538784000000),
-//                 y: [6635.65, 6651, 6629.67, 6638.24]
-//               },
-//               {
-//                 x: new Date(1538785800000),
-//                 y: [6638.24, 6640, 6620, 6624.47]
-//               },
-//               {
-//                 x: new Date(1538787600000),
-//                 y: [6624.53, 6636.03, 6621.68, 6624.31]
-//               },
-//               {
-//                 x: new Date(1538789400000),
-//                 y: [6624.61, 6632.2, 6617, 6626.02]
-//               },
-//               {
-//                 x: new Date(1538791200000),
-//                 y: [6627, 6627.62, 6584.22, 6603.02]
-//               },
-//               {
-//                 x: new Date(1538793000000),
-//                 y: [6605, 6608.03, 6598.95, 6604.01]
-//               },
-//               {
-//                 x: new Date(1538794800000),
-//                 y: [6604.5, 6614.4, 6602.26, 6608.02]
-//               },
-//               {
-//                 x: new Date(1538796600000),
-//                 y: [6608.02, 6610.68, 6601.99, 6608.91]
-//               },
-//               {
-//                 x: new Date(1538798400000),
-//                 y: [6608.91, 6618.99, 6608.01, 6612]
-//               },
-//               {
-//                 x: new Date(1538800200000),
-//                 y: [6612, 6615.13, 6605.09, 6612]
-//               },
-//               {
-//                 x: new Date(1538802000000),
-//                 y: [6612, 6624.12, 6608.43, 6622.95]
-//               },
-//               {
-//                 x: new Date(1538803800000),
-//                 y: [6623.91, 6623.91, 6615, 6615.67]
-//               },
-//               {
-//                 x: new Date(1538805600000),
-//                 y: [6618.69, 6618.74, 6610, 6610.4]
-//               },
-//               {
-//                 x: new Date(1538807400000),
-//                 y: [6611, 6622.78, 6610.4, 6614.9]
-//               },
-//               {
-//                 x: new Date(1538809200000),
-//                 y: [6614.9, 6626.2, 6613.33, 6623.45]
-//               },
-//               {
-//                 x: new Date(1538811000000),
-//                 y: [6623.48, 6627, 6618.38, 6620.35]
-//               },
-//               {
-//                 x: new Date(1538812800000),
-//                 y: [6619.43, 6620.35, 6610.05, 6615.53]
-//               },
-//               {
-//                 x: new Date(1538814600000),
-//                 y: [6615.53, 6617.93, 6610, 6615.19]
-//               },
-//               {
-//                 x: new Date(1538816400000),
-//                 y: [6615.19, 6621.6, 6608.2, 6620]
-//               },
-//               {
-//                 x: new Date(1538818200000),
-//                 y: [6619.54, 6625.17, 6614.15, 6620]
-//               },
-//               {
-//                 x: new Date(1538820000000),
-//                 y: [6620.33, 6634.15, 6617.24, 6624.61]
-//               },
-//               {
-//                 x: new Date(1538821800000),
-//                 y: [6625.95, 6626, 6611.66, 6617.58]
-//               },
-//               {
-//                 x: new Date(1538823600000),
-//                 y: [6619, 6625.97, 6595.27, 6598.86]
-//               },
-//               {
-//                 x: new Date(1538825400000),
-//                 y: [6598.86, 6598.88, 6570, 6587.16]
-//               },
-//               {
-//                 x: new Date(1538827200000),
-//                 y: [6588.86, 6600, 6580, 6593.4]
-//               },
-//               {
-//                 x: new Date(1538829000000),
-//                 y: [6593.99, 6598.89, 6585, 6587.81]
-//               },
-//               {
-//                 x: new Date(1538830800000),
-//                 y: [6587.81, 6592.73, 6567.14, 6578]
-//               },
-//               {
-//                 x: new Date(1538832600000),
-//                 y: [6578.35, 6581.72, 6567.39, 6579]
-//               },
-//               {
-//                 x: new Date(1538834400000),
-//                 y: [6579.38, 6580.92, 6566.77, 6575.96]
-//               },
-//               {
-//                 x: new Date(1538836200000),
-//                 y: [6575.96, 6589, 6571.77, 6588.92]
-//               },
-//               {
-//                 x: new Date(1538838000000),
-//                 y: [6588.92, 6594, 6577.55, 6589.22]
-//               },
-//               {
-//                 x: new Date(1538839800000),
-//                 y: [6589.3, 6598.89, 6589.1, 6596.08]
-//               },
-//               {
-//                 x: new Date(1538841600000),
-//                 y: [6597.5, 6600, 6588.39, 6596.25]
-//               },
-//               {
-//                 x: new Date(1538843400000),
-//                 y: [6598.03, 6600, 6588.73, 6595.97]
-//               },
-//               {
-//                 x: new Date(1538845200000),
-//                 y: [6595.97, 6602.01, 6588.17, 6602]
-//               },
-//               {
-//                 x: new Date(1538847000000),
-//                 y: [6602, 6607, 6596.51, 6599.95]
-//               },
-//               {
-//                 x: new Date(1538848800000),
-//                 y: [6600.63, 6601.21, 6590.39, 6591.02]
-//               },
-//               {
-//                 x: new Date(1538850600000),
-//                 y: [6591.02, 6603.08, 6591, 6591]
-//               },
-//               {
-//                 x: new Date(1538852400000),
-//                 y: [6591, 6601.32, 6585, 6592]
-//               },
-//               {
-//                 x: new Date(1538854200000),
-//                 y: [6593.13, 6596.01, 6590, 6593.34]
-//               },
-//               {
-//                 x: new Date(1538856000000),
-//                 y: [6593.34, 6604.76, 6582.63, 6593.86]
-//               },
-//               {
-//                 x: new Date(1538857800000),
-//                 y: [6593.86, 6604.28, 6586.57, 6600.01]
-//               },
-//               {
-//                 x: new Date(1538859600000),
-//                 y: [6601.81, 6603.21, 6592.78, 6596.25]
-//               },
-//               {
-//                 x: new Date(1538861400000),
-//                 y: [6596.25, 6604.2, 6590, 6602.99]
-//               },
-//               {
-//                 x: new Date(1538863200000),
-//                 y: [6602.99, 6606, 6584.99, 6587.81]
-//               },
-//               {
-//                 x: new Date(1538865000000),
-//                 y: [6587.81, 6595, 6583.27, 6591.96]
-//               },
-//               {
-//                 x: new Date(1538866800000),
-//                 y: [6591.97, 6596.07, 6585, 6588.39]
-//               },
-//               {
-//                 x: new Date(1538868600000),
-//                 y: [6587.6, 6598.21, 6587.6, 6594.27]
-//               },
-//               {
-//                 x: new Date(1538870400000),
-//                 y: [6596.44, 6601, 6590, 6596.55]
-//               },
-//               {
-//                 x: new Date(1538872200000),
-//                 y: [6598.91, 6605, 6596.61, 6600.02]
-//               },
-//               {
-//                 x: new Date(1538874000000),
-//                 y: [6600.55, 6605, 6589.14, 6593.01]
-//               },
-//               {
-//                 x: new Date(1538875800000),
-//                 y: [6593.15, 6605, 6592, 6603.06]
-//               },
-//               {
-//                 x: new Date(1538877600000),
-//                 y: [6603.07, 6604.5, 6599.09, 6603.89]
-//               },
-//               {
-//                 x: new Date(1538879400000),
-//                 y: [6604.44, 6604.44, 6600, 6603.5]
-//               },
-//               {
-//                 x: new Date(1538881200000),
-//                 y: [6603.5, 6603.99, 6597.5, 6603.86]
-//               },
-//               {
-//                 x: new Date(1538883000000),
-//                 y: [6603.85, 6605, 6600, 6604.07]
-//               },
-//               {
-//                 x: new Date(1538884800000),
-//                 y: [6604.98, 6606, 6604.07, 6606]
-//               },
-//         ],
-//       },
-//     ]);
-  
-//     const options = {
-//       chart: {
-//         type: 'candlestick',
-//         height: 350,
-//       },
-//       title: {
-//         text: 'CandleStick Chart',
-//         align: 'left',
-//       },
-//       xaxis: {
-//         type: 'datetime',
-//       },
-//       yaxis: {
-//         tooltip: {
-//           enabled: true,
-//         },
-//       },
-//     };
-  
-//     return (
-//       <div id="chart">
-//         <ReactApexChart options={options} series={series} type="candlestick" height={350} />
-//       </div>
-//     );
-//   }
+
 function StockChart() {
     const [series, setSeries] = useState([]);
   
@@ -599,15 +349,65 @@ function Toggle() {
       );
   }
 
-function TextFieldWithButtons({ value, onChange, onLeftButtonClick, onRightButtonClick }) {
+  function TextFieldWithButtons({ value, onChange, onLeftButtonClick, onRightButtonClick, postfix }) {
     return (
-    <div className="text-field-with-buttons" style={{ display: 'flex', alignItems: 'center'}}>
-        <button style={{ borderRadius: '40% 0 0 40%', width : '45px',height: '36px', backgroundColor : '#F2FFFA', border: '1px solid #D9D9D9', fontSize : '20px'}} onClick={onLeftButtonClick}>-</button>
-        <input type="text" value={value} onChange={onChange} style = {{width : '65%',height: '32px',  border: 'solid 1px #D9D9D9'}}/>
-        <button style={{ borderRadius: '0 40% 40% 0' , width : '45px',height: '36px', backgroundColor : '#F2FFFA', border: '1px solid #D9D9D9', fontSize : '20px'}} onClick={onRightButtonClick}>+</button>
-    </div>
+      <div className="text-field-with-buttons" style={{ display: 'flex', alignItems: 'center' }}>
+        <button
+          style={{
+            borderRadius: '40% 0 0 40%',
+            width: '45px',
+            height: '36px',
+            backgroundColor: '#F2FFFA',
+            border: '1px solid #D9D9D9',
+            fontSize: '20px',
+          }}
+          onClick={onLeftButtonClick}
+        >
+          -
+        </button>
+        <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+          <input
+            type="text"
+            value={value}
+            onChange={onChange}
+            style={{
+              width: '100%',
+              height: '32px',
+              border: 'solid 1px #D9D9D9',
+              paddingLeft: '8px',
+              paddingRight: '32px',
+            }}
+          />
+          {postfix && (
+            <span
+              style={{
+                position: 'absolute',
+                right: '8px',
+                color: '#555555',
+                fontSize: '12px',
+              }}
+            >
+              {postfix}
+            </span>
+          )}
+        </div>
+        <button
+          style={{
+            borderRadius: '0 40% 40% 0',
+            width: '45px',
+            height: '36px',
+            backgroundColor: '#F2FFFA',
+            border: '1px solid #D9D9D9',
+            fontSize: '20px',
+          }}
+          onClick={onRightButtonClick}
+        >
+          +
+        </button>
+      </div>
     );
   }
+  
 
 
   const ScrollPage = () => {
@@ -646,126 +446,33 @@ function TextFieldWithButtons({ value, onChange, onLeftButtonClick, onRightButto
     );
   };
 
-function Mainbody1(){
-
-    const [text1, setText1] = useState(0);
-    const [text2, setText2] = useState(0);
-    
-
-    const handleChange1 = (event) => {
-    let inputValue = event.target.value;
-    inputValue = inputValue.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
-    setText1(inputValue);
-    };
-
-    const handleChange2 = (event) => {
-    let inputValue = event.target.value;
-    inputValue = inputValue.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
-    setText2(inputValue);
-    };
-
-
-    const handleLeftButtonClick = (field) => {
-        if (field === 'text1') {
-          setText1((prevText1) => {
-            const parsedText1 = parseInt(prevText1);
-            return isNaN(parsedText1) ? prevText1 : String(parsedText1 - 1);
-          });
-        } else if (field === 'text2') {
-          setText2((prevText2) => {
-            const parsedText2 = parseInt(prevText2);
-            return isNaN(parsedText2) ? prevText2 : String(parsedText2 - 1);
-          });
-        }
+  const handleBuyButtonClick = async (portfolioId, text2, searchResults) => {
+    try {
+      const totalPrice = text2 * searchResults.price;
+  
+      const requestBody = {
+        portfolioId: portfolioId,
+        text2: text2,
+        totalPrice: totalPrice,
       };
-      
-      const handleRightButtonClick = (field) => {
-        if (field === 'text1') {
-          setText1((prevText1) => {
-            const parsedText1 = parseInt(prevText1);
-            return isNaN(parsedText1) ? prevText1 : String(parsedText1 + 1);
-          });
-        } else if (field === 'text2') {
-          setText2((prevText2) => {
-            const parsedText2 = parseInt(prevText2);
-            return isNaN(parsedText2) ? prevText2 : String(parsedText2 + 1);
-          });
-        }
-      };
-
-
+  
+      const response = await axios.post('your_api_endpoint', requestBody);
+  
+      // POST 요청 성공 후의 처리
+  
+    } catch (error) {
+      // POST 요청 실패 또는 에러 처리
+      console.error(error);
+    }
+  };
+  
+  const BuyButton = ({ portfolioId, text1, text2, searchResults }) => {
+    const handleClick = () => {
+      handleBuyButtonClick(portfolioId, text1, text2, searchResults);
+    };
+  
     return (
-        <div style={{marginTop: '2vh', marginBottom : '8vh'}}>
-        <div style = {{display : 'flex'}}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>
-                <div className="Row1" style = {{marginTop : '1vh'}}>
-                    <div style={{display :'flex'}}>
-                        <img src={phone} alt="Apple Phone" style={{ width: '40px', height: '40px', marginTop: '5px', marginBottom: '5px', marginLeft: '3vw'}} />
-                        <div style={{marginLeft : '1vw', marginTop : '1.4vh'}}>애플</div>
-                        <div style={{marginLeft : '2.5vw', marginTop : '1.9vh', color : '#F6465D'}}>$158.88</div>
-                        <div style={{marginLeft : '2.5vw', marginTop : '1.9vh', color : '#F6465D'}}>+0.67%</div>
-                        <div style={{marginLeft : '2vw', marginTop : '1.9vh', color : '#F6465D'}}>1.06</div>
-                        <div style={{marginLeft : '2.5vw', marginTop : '1.4vh'}}>거래량</div>
-                        <div style={{marginLeft : '2vw', marginTop : '1.9vh'}}>68,483,589</div>
-                        <div style={{marginLeft : '2.5vw', marginTop : '1.4vh'}}>거래대금</div>
-                        <div style={{marginLeft : '2vw', marginTop : '1.4vh'}}>$109억 2,896만</div>
-                    </div> 
-                </div>
-                <div className="Row2">
-                    <StockChart />
-                </div>
-                <div className="Row3">
-                <CashChart />
-                </div>
-            </div>
-            <div style={{display: 'grid', gridTemplateColumns: '1fr', marginTop : '1vh'}}>
-                <div className="Row4"><Toggle /></div>
-                <div className="Row5">
-                    <div style = {{marginTop : '4vh'}}>
-                        <div style = {{marginLeft : '0.5vw'}}>
-                            <TextFieldWithButtons
-                                value={text1}
-                                onChange={handleChange1}
-                                onLeftButtonClick={() => handleLeftButtonClick('text1')}
-                                onRightButtonClick={() => handleRightButtonClick('text1')}
-                            />
-                        </div>
-                        <div style = {{marginLeft : '0.5vw', marginTop : '1vh'}}>
-                            <TextFieldWithButtons
-                                value={text2}
-                                onChange={handleChange2}
-                                onLeftButtonClick={() => handleLeftButtonClick('text2')}
-                                onRightButtonClick={() => handleRightButtonClick('text2')}
-                            />
-                        </div>
-                    </div>
-                    <div style = {{marginLeft : '1vw', marginRight : '1vw', marginTop : '1vh', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                        <button className="PercentButton">
-                            10%
-                        </button>
-                        <button className="PercentButton">
-                            25%
-                        </button>
-                        <button className="PercentButton">
-                            50%
-                        </button>
-                        <button className="PercentButton">
-                            100%
-                        </button>
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 20px', marginTop : '10px', fontSize : '12px'}}>
-                        <div>
-                            주문단가
-                        </div>
-                        <div>
-                            0원
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 20px', marginTop : '10px', fontSize : '12px'}}>
-                        <div>주문총액</div>
-                        <div>0원</div> 
-                    </div>
-                    <button
+      <button
         style={{
           borderRadius: '20px',
           backgroundColor: '#00A968',
@@ -776,19 +483,344 @@ function Mainbody1(){
           width: '250px',
           height: '40px',
           color: 'white',
-          marginTop: '18px'
+          marginTop: '18px',
         }}
+        onClick={handleClick}
       >
-                      매수하기
-                    </button>
-                </div>  
-                
-            </div>
-        </div>
-        </div>
+        매수하기
+      </button>
     );
+  };
 
-}
+  function Mainbody1({ searchResults }) {
+    const [text1, setText1] = useState(0);
+    const [text2, setText2] = useState(0);
+    searchResults.price = '7000';
+    const handleChange1 = (event) => {
+      let inputValue = event.target.value;
+      inputValue = inputValue.replace(/[^0-9]/g, '');
+  
+      if (inputValue.length === 0) {
+        setText1('0'); // 값이 비어있을 경우 '0'으로 설정
+      } else if (inputValue.length === 1 && inputValue !== '0') {
+        setText1(inputValue); // 값이 0으로 시작하지 않으면 그대로 설정
+      } else if (inputValue.length > 1) {
+        setText1(inputValue.replace(/^0+/, '')); // 값이 0으로 시작할 경우 0 제거
+      }
+  
+      // searchResults가 유효한 객체인 경우에만 계산 수행
+      if (searchResults && searchResults.price) {
+        const parsedInputValue = parseInt(inputValue);
+        const price = parseInt(searchResults.price.replace(/[^0-9]/g, ''));
+        if (!isNaN(parsedInputValue) && !isNaN(price)) {
+          const quantity = Math.floor(parsedInputValue / price);
+          setText2(quantity.toString());
+        }
+      }
+    };
+  
+    const handleChange2 = (event) => {
+      let inputValue = event.target.value;
+      inputValue = inputValue.replace(/[^0-9]/g, '');
+  
+      if (inputValue.length === 0) {
+        setText2('0'); // 값이 비어있을 경우 '0'으로 설정
+      } else if (inputValue.length === 1 && inputValue !== '0') {
+        setText2(inputValue); // 값이 0으로 시작하지 않으면 그대로 설정
+      } else if (inputValue.length > 1) {
+        setText2(inputValue.replace(/^0+/, '')); // 값이 0으로 시작할 경우 0 제거
+      }
+  
+      // searchResults가 유효한 객체인 경우에만 계산 수행
+      if (searchResults && searchResults.price) {
+        const parsedInputValue = parseInt(inputValue);
+        const price = parseInt(searchResults.price.replace(/[^0-9]/g, ''));
+        if (!isNaN(parsedInputValue) && !isNaN(price)) {
+          const amount = parsedInputValue * price;
+          setText1(amount.toString());
+        }
+      }
+    };
+  
+    const handleRightButtonClick1 = () => {
+      setText1((prevText1) => {
+        const parsedText1 = parseInt(prevText1);
+        const stockPrice = parseInt(searchResults.price);
+    
+        if (isNaN(parsedText1)) {
+          return prevText1;
+        }
+    
+        const result = parsedText1 + stockPrice;
+        return String(result);
+      });
+    
+      setText2((prevText2) => {
+        const parsedText2 = parseInt(prevText2);
+    
+        if (isNaN(parsedText2)) {
+          return prevText2;
+        }
+    
+        const result = parsedText2 + 1;
+        return String(result);
+      });
+    };
+    
+    const handleLeftButtonClick1 = () => {
+      setText1((prevText1) => {
+        const parsedText1 = parseInt(prevText1);
+        const stockPrice = parseInt(searchResults.price);
+    
+        if (isNaN(parsedText1)) {
+          return prevText1;
+        }
+    
+        const result = parsedText1 - stockPrice;
+        return String(result >= 0 ? result : 0);
+      });
+    
+      setText2((prevText2) => {
+        const parsedText2 = parseInt(prevText2);
+    
+        if (isNaN(parsedText2)) {
+          return prevText2;
+        }
+    
+        const result = parsedText2 - 1;
+        return String(result >= 0 ? result : 0);
+      });
+    };
+    
+    const handleRightButtonClick2 = () => {
+      setText1((prevText1) => {
+        const parsedText1 = parseInt(prevText1);
+        const stockPrice = parseInt(searchResults.price);
+    
+        if (isNaN(parsedText1)) {
+          return prevText1;
+        }
+    
+        const result = parsedText1 + stockPrice;
+        return String(result);
+      });
+    
+      setText2((prevText2) => {
+        const parsedText2 = parseInt(prevText2);
+    
+        if (isNaN(parsedText2)) {
+          return prevText2;
+        }
+    
+        const result = parsedText2 + 1;
+        return String(result);
+      });
+    };
+    
+    const handleLeftButtonClick2 = () => {
+      setText1((prevText1) => {
+        const parsedText1 = parseInt(prevText1);
+        const stockPrice = parseInt(searchResults.price);
+    
+        if (isNaN(parsedText1)) {
+          return prevText1;
+        }
+    
+        const result = parsedText1 - stockPrice;
+        return String(result >= 0 ? result : 0);
+      });
+    
+      setText2((prevText2) => {
+        const parsedText2 = parseInt(prevText2);
+    
+        if (isNaN(parsedText2)) {
+          return prevText2;
+        }
+    
+        const result = parsedText2 - 1;
+        return String(result >= 0 ? result : 0);
+      });
+    };
+    const portfolioId = 10;
+    const handlePercentButtonClick = async (percentage, portfolioId) => {
+      try {
+        const response = await axios.get('your_api_endpoint', {
+          params: {
+            percentage: percentage,
+            portfolioId: portfolioId,
+          },
+        });
+    
+        // 받은 데이터의 값을 텍스트 필드에 적용
+        const textField = document.getElementById('textField');
+        textField.value = response.data;
+    
+      } catch (error) {
+        // 에러 처리
+        console.error(error);
+      }
+    };
+
+    const PercentButton = ({ percentage, portfolioId }) => {
+      const handleClick = () => {
+        handlePercentButtonClick(percentage, portfolioId);
+      };
+    
+      return (
+        <button className="PercentButton" onClick={handleClick}>
+          {percentage}%
+        </button>
+      );
+    };
+  
+    return (
+      <div style={{ marginTop: '2vh', marginBottom: '8vh' }}>
+        <div style={{ display: 'flex' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>
+            <div className="Row1" style={{ marginTop: '1vh' }}>
+              <div style={{ display: 'flex' }}>
+                <img
+                  src={phone}
+                  alt="Apple Phone"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    marginTop: '5px',
+                    marginBottom: '5px',
+                    marginLeft: '3vw',
+                  }}
+                />
+                <div style={{ marginLeft: '1vw', marginTop: '1.4vh' }}>
+                  {searchResults.name}
+                </div>
+                <div
+                  style={{
+                    marginLeft: '2.5vw',
+                    marginTop: '1.9vh',
+                    color: '#F6465D',
+                  }}
+                >
+                  {searchResults.price}
+                </div>
+                <div
+                  style={{
+                    marginLeft: '2.5vw',
+                    marginTop: '1.9vh',
+                    color: '#F6465D',
+                  }}
+                >
+                  {searchResults.change}
+                </div>
+                <div
+                  style={{
+                    marginLeft: '2vw',
+                    marginTop: '1.9vh',
+                    color: '#F6465D',
+                  }}
+                >
+                  {searchResults.volume}
+                </div>
+                <div style={{ marginLeft: '2.5vw', marginTop: '1.4vh' }}>
+                  거래량
+                </div>
+                <div style={{ marginLeft: '2vw', marginTop: '1.9vh' }}>
+                  {searchResults.tradeVolume}
+                </div>
+                <div style={{ marginLeft: '2.5vw', marginTop: '1.4vh' }}>
+                  거래대금
+                </div>
+                <div style={{ marginLeft: '2vw', marginTop: '1.4vh' }}>
+                  {searchResults.tradeAmount}
+                </div>
+              </div>
+            </div>
+            <div className="Row2">
+              <StockChart />
+            </div>
+            <div className="Row3">
+              <CashChart />
+            </div>
+          </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr',
+              marginTop: '1vh',
+            }}
+          >
+            <div className="Row4">
+              <Toggle />
+            </div>
+            <div className="Row5">
+            <div style={{ marginTop: '4vh' }}>
+              <div style={{ marginLeft: '0.5vw' }}>
+                <TextFieldWithButtons
+                  value={text1}
+                  onChange={handleChange1}
+                  onLeftButtonClick={() => handleLeftButtonClick1('text1')}
+                  onRightButtonClick={() => handleRightButtonClick1('text1')}
+                  postfix="원" // 숫자 다음에 '원'이 붙도록 설정
+                />
+              </div>
+              <div style={{ marginLeft: '0.5vw', marginTop: '1vh' }}>
+                <TextFieldWithButtons
+                  value={text2}
+                  onChange={handleChange2}
+                  onLeftButtonClick={() => handleLeftButtonClick2('text2')}
+                  onRightButtonClick={() => handleRightButtonClick2('text2')}
+                  postfix="주" // 숫자 다음에 '주'가 붙도록 설정
+                />
+              </div>
+            </div>
+              <div
+                style={{
+                  marginLeft: '1vw',
+                  marginRight: '1vw',
+                  marginTop: '1vh',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
+                <PercentButton percentage={10} portfolioId={portfolioId} />
+                <PercentButton percentage={25} portfolioId={portfolioId} />
+                <PercentButton percentage={50} portfolioId={portfolioId} />
+                <PercentButton percentage={100} portfolioId={portfolioId} />
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  margin: '0 20px',
+                  marginTop: '10px',
+                  fontSize: '12px',
+                }}
+              >
+                <div>주문단가</div>
+                <div>{searchResults.price}원</div>
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  margin: '0 20px',
+                  marginTop: '10px',
+                  fontSize: '12px',
+                }}
+              >
+                <div>주문총액</div>
+                <div>{parseInt(parseInt(text1)/parseInt(searchResults.price)) *parseInt(searchResults.price) }원</div>
+              </div>
+              <BuyButton portfolioId={portfolioId} text2={text2} searchResults={searchResults} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
 
 function Mainbody2() {
     const [data, setData] = useState([10000000, 10000000, 0.00, 0, 0]);
@@ -891,30 +923,38 @@ function Mainbody2() {
     );
   }
 
-function CreatePageBody() {
+  function CreatePageBody() {
+    const [searchResults, setSearchResults] = useState([]);
+  
+    const handleSearchResults = (results) => {
+      // 검색 결과를 처리하는 로직을 작성합니다.
+      console.log('Search results:', results);
+      setSearchResults(results); // 검색 결과를 상태로 설정합니다.
+    };
+  
     return (
-        <div>
-            <div style={{ border: '1px solid white', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', marginTop: '20vh', marginLeft: '3vw', marginRight: '3vw' }}>
-                <div style={{ display: 'flex', marginTop: '15vh'}}>
-                    <div className = "ButtonContainer">
-                        <ButtonGroup/>
-                    </div>
-                    <div className = "SearchContainer" style = {{marginLeft : '5vw'}}>
-                        <Search style={{flex: 1}} />
-                    </div>
-                </div>
-                <div>
-                    <Mainbody1 />
-                </div>
+      <div>
+        <div style={{ border: '1px solid white', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', marginTop: '20vh', marginLeft: '3vw', marginRight: '3vw' }}>
+          <div style={{ display: 'flex', marginTop: '15vh' }}>
+            <div className="ButtonContainer">
+              <ButtonGroup />
             </div>
-            <div>
-                <div style = {{border: '1px solid white', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', marginTop: '20vh', marginLeft: '3vw', marginRight: '3vw'}}>
-                    <Mainbody2 />
-                </div>
+            <div className="SearchContainer" style={{ marginLeft: '5vw' }}>
+              <Search onSearchResults={handleSearchResults} />
             </div>
+          </div>
+          <div>
+            <Mainbody1 searchResults={searchResults} /> {/* 검색 결과를 Mainbody1 컴포넌트로 전달합니다. */}
+          </div>
         </div>
-      );
-}
+        <div>
+          <div style={{ border: '1px solid white', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', marginTop: '20vh', marginLeft: '3vw', marginRight: '3vw' }}>
+            <Mainbody2 />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
 function CreateContainer() {
   return (
