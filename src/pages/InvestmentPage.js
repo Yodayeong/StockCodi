@@ -151,7 +151,7 @@ function Search({ onSearchResults }) {
 
   const handleSearch = () => {
     // 검색어를 서버로 전송하는 로직을 작성합니다.
-    axios.get(`/search?query=${searchQuery}`)
+    axios.get(`http://115.85.183.174:8080/search?query=${searchQuery}`)
       .then((response) => {
         // 서버로부터 받은 응답을 처리합니다.
         console.log(response.data);
@@ -336,19 +336,76 @@ function StockChart() {
     return <div id="chart" ref={chartRef} />;
   }
   
-
-function Toggle() {
-      return (
+  const Toggle = () => {
+    const [portfolioNames, setPortfolioNames] = useState([]);
+    const [selectedOption, setSelectedOption] = useState('');
+  
+    useEffect(() => {
+      fetchPortfolioNames();
+    }, []);
+  
+    const fetchPortfolioNames = async () => {
+      try {
+        const response = await axios.get('http://115.85.183.174:8080/api/portfolio/items');
+        const data = response.data;
+        setPortfolioNames(data);
+      } catch (error) {
+        console.error('Error fetching portfolio names:', error);
+      }
+    };
+  
+    const handleOptionChange = (event) => {
+      setSelectedOption(event.target.value);
+    };
+  
+    const handleCreatePortfolio = async () => {
+      console.log('시발시발시발시발');
+      try {
+        const response = await axios.post('http://115.85.183.174:8080/api/portfolio/new', {
+          initialCash: 100000,
+          portfolioName: 'account 1',
+          currentCash: 100000,
+          email: 'woghd@naver.com',
+          totalAsset: 100000,
+        });
+        console.log('Portfolio created:', response.data);
+        // Do something with the response if needed
+      } catch (error) {
+        console.error('Error creating portfolio:', error);
+      }
+    };
+  
+    return (
       <div>
-          <select style={{fontWeight:'bold', width: '130px', fontSize: '10px', marginLeft: '10px', border: 'none'}} aria-label="Sorting Options">
-          <option value="first">유의 포트폴리오_1</option>
-          <option value="second">유의 포트폴리오_2</option>
-          <option value="third">유의 포트폴리오_3</option>
-          </select>
+        <select
+          style={{
+            fontWeight: 'bold',
+            width: '130px',
+            fontSize: '10px',
+            marginLeft: '10px',
+            border: 'none',
+          }}
+          aria-label="Sorting Options"
+          value={selectedOption}
+          onChange={handleOptionChange}
+        >
+          {portfolioNames.length === 0 && (
+            <option value="create">포트폴리오 생성</option>
+          )}
+          {portfolioNames.map((name, index) => (
+            <option key={index} value={name}>
+              {name}
+            </option>
+          ))}
+        </select>
+        {selectedOption === 'create' && (
+          <button onClick={handleCreatePortfolio}>포트폴리오 생성</button>
+        )}
       </div>
-      );
-  }
-
+    );
+  };
+  
+  
   function TextFieldWithButtons({ value, onChange, onLeftButtonClick, onRightButtonClick, postfix }) {
     return (
       <div className="text-field-with-buttons" style={{ display: 'flex', alignItems: 'center' }}>
@@ -456,12 +513,14 @@ function Toggle() {
         totalPrice: totalPrice,
       };
   
-      const response = await axios.post('your_api_endpoint', requestBody);
+      const response = await axios.post('http://115.85.183.174:8080/api/holdingstock/create', requestBody);
   
       // POST 요청 성공 후의 처리
   
     } catch (error) {
       // POST 요청 실패 또는 에러 처리
+      console.log(portfolioId);
+      console.log(text2);
       console.error(error);
     }
   };
@@ -672,7 +731,7 @@ function Toggle() {
         </button>
       );
     };
-  
+    
     return (
       <div style={{ marginTop: '2vh', marginBottom: '8vh' }}>
         <div style={{ display: 'flex' }}>
@@ -842,7 +901,24 @@ function Mainbody2() {
       }
       setScrollPosition(currentPosition);
     };
-  
+    
+    const fetchPortfolioData = async () => {
+    try {
+      const response = await axios.get('http://115.85.183.174:8080/api/portfolio/{portfolioId}'); // Replace {portfolioId} with the actual portfolio ID
+      const portfolioData = response.data;
+      const updatedData = [
+        portfolioData.evaluatedAsset,
+        portfolioData.cash,
+        portfolioData.cumulativeRate,
+        portfolioData.evaluatedProfit,
+        portfolioData.stockEvaluation,
+      ];
+      setData(updatedData);
+    } catch (error) {
+      console.error('Error fetching portfolio data:', error);
+    }
+  };
+
     const fetchData = async () => {
       // 서버에 데이터 요청
       // 예를 들어, fetch나 axios 등을 사용하여 서버로부터 데이터를 받아옵니다.
@@ -927,9 +1003,19 @@ function Mainbody2() {
     const [searchResults, setSearchResults] = useState([]);
   
     const handleSearchResults = (results) => {
-      // 검색 결과를 처리하는 로직을 작성합니다.
       console.log('Search results:', results);
-      setSearchResults(results); // 검색 결과를 상태로 설정합니다.
+      setSearchResults(results);
+    };
+  
+    const handleSearch = (stockName) => {
+      axios.get(`http://115.85.183.174:8080/api/stockInfo/${stockName}`)
+        .then(response => {
+          handleSearchResults(response.data);
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching search results:', error);
+        });
     };
   
     return (
