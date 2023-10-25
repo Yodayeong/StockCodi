@@ -22,13 +22,17 @@
 
 ![main2](image.assets/main2.png)
 
+<br>
 <hr>
+<br>
 
 ### [로그인]
 
 ![login](image.assets/login.png)
 
+<br>
 <hr>
+<br>
 
 ### [회원가입]
 
@@ -36,19 +40,23 @@
 
 ![register2](image.assets/register2.png)
 
+<br>
 <hr>
+<br>
 
 ### [주식 교육]
 
 ![study](image.assets/study.png)
 
+<br>
 <hr>
+<br>
 
 ### [주식 모의투자]
 
-![stock](/Users/yodayeong/Desktop/StockCodi/image.assets/stock.png)
+![stock](image.assets/stock.png)
 
-![stock2](/Users/yodayeong/Desktop/StockCodi/image.assets/stock2.png)
+![stock2](image.assets/stock2.png)
 
 <br>
 
